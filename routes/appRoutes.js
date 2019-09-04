@@ -3,6 +3,7 @@
 module.exports = function(app) {
   var todoList = require('../controller/appController');
   var branch = require('../controller/cabang/cabangController');
+  var gate = require('../controller/gate/gateController');
 
   // todoList Routes
   app.route('/tasks')
@@ -23,6 +24,10 @@ module.exports = function(app) {
     .get(branch.read_a_branch)
     .put(branch.update_a_branch)
     .delete(branch.delete_a_branch);
+
+  // gate routes
+  app.route('/gate/:branchID')
+    .get(gate.read_gate_by_branch);
 
 };
 
