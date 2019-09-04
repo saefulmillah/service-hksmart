@@ -9,7 +9,7 @@ var Gate = function(branch){
 };
 
 Gate.getGateByBranchID = function (BranchID, result) {
-        sql.query("Select GATE_NAME, GATE_CODE from ms_gate where BRANCH_ID = ? ", BranchID, function (err, res) {             
+        sql.query("Select * from ms_gate where BRANCH_ID = ? ", BranchID, function (err, res) {             
                 if(err) {
                     console.log("error: ", err);
                     result(err, null);
