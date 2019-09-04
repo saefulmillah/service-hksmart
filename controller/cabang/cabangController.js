@@ -9,7 +9,7 @@ exports.list_all_branch = function(req, res) {
     if (err)
       res.send(err);
       console.log('res', branch);
-    res.send(branch);
+      res.send({ branch });
   });
 };
 
@@ -37,7 +37,7 @@ exports.create_a_branch = function(req, res) {
 exports.read_a_branch = function(req, res) {
   Branch.getBranchById(req.params.branchID, function(err, branch) {
     if (err)
-      res.send(err);
+    res.send(err);
     res.json(branch);
   });
 };
