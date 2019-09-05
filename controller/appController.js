@@ -40,7 +40,7 @@ exports.read_a_task = function(req, res) {
   Task.getTaskById(req.params.taskId, function(err, task) {
     if (err)
       res.send(err);
-    res.json(task);
+      res.json(task);
   });
 };
 
@@ -49,7 +49,7 @@ exports.update_a_task = function(req, res) {
   Task.updateById(req.params.taskId, new Task(req.body), function(err, task) {
     if (err)
       res.send(err);
-    res.json(task);
+      res.json(task);
   });
 };
 
@@ -60,6 +60,6 @@ exports.delete_a_task = function(req, res) {
   Task.remove( req.params.taskId, function(err, task) {
     if (err)
       res.send(err);
-    res.json({ message: 'Task successfully deleted' });
+      res.json({ message: 'Task successfully deleted' });
   });
 };

@@ -4,6 +4,7 @@ module.exports = function(app) {
   var todoList = require('../controller/appController');
   var branch = require('../controller/cabang/cabangController');
   var gate = require('../controller/gate/gateController');
+  var tariff = require('../controller/tariff/tariffController');
 
   // todoList Routes
   app.route('/tasks')
@@ -28,6 +29,10 @@ module.exports = function(app) {
   // gate routes
   app.route('/gate/:branchID')
     .get(gate.read_gate_by_branch);
+
+  // Tariff Routes
+  app.route('/tariff')
+    .post(tariff.read_tariff_by_filter);
 
 };
 
