@@ -8,6 +8,7 @@ exports.read_tariff_by_filter = function(req, res) {
   // var cleanb = b.replace(/['"]+/g, '');
   console.log(req.body)
   console.log(a)
+  console.log(b)
   // return
   Tariff.getTariffByFilter(a, function (err, result) {
   	if (err) {
