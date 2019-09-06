@@ -17,9 +17,4 @@ exports.read_tariff_by_filter = function(req, res) {
   		});
   	}
   });
-  Tariff.getTariffByFilter(req.params.GateOriginID, req.params.GateDestinationID, req.params.GolID, function(err, tariff) {
-    if (err)
-    res.send(err);
-    res.json({tariff});
-  });
 };
