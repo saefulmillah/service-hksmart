@@ -12,9 +12,9 @@ var Tariff = function(tariff){
 
 
 Tariff.getTariffByFilter = function getTariffByFilter(query, result) {
-    var a = query
-    console.log(query)
-    console.log(a["GATE_ORIGIN_ID"]);
+    var a = JSON.parse(query)
+    console.log(a)
+    console.log(a["GATE_ORIGIN_ID"])
     console.log(a.GATE_ORIGIN_ID)
     return
     // console.log("SELECT * FROM map_tariff WHERE GATE_ORIGIN_ID ="+ query.GATE_ORIGIN_ID+"  AND GATE_DESTINATION_ID = "+query.GATE_DESTINATION_ID+" AND GOL_ID = "+query.GOL_ID )
