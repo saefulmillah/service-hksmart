@@ -4,6 +4,8 @@ var Tariff = require('../../model/tariffModel.js');
 
 exports.read_tariff_by_filter = function(req, res) {
   var get_tariff = req.body
+  console.log(get_tariff)
+  return
 
   Tariff.getTariffByFilter(get_tariff, function (err, result) {
   	if (err) {
