@@ -7,16 +7,16 @@ exports.read_tariff_by_filter = function(req, res) {
   console.log(get_tariff)
   return
 
-  Tariff.getTariffByFilter(get_tariff, function (err, result) {
-  	if (err) {
-  		res.send(err);
-  	} else {
-  		res.status(200).json({
-  			status : "success",
-  			data : result 
-  		});
-  	}
-  });
+  // Tariff.getTariffByFilter(get_tariff, function (err, result) {
+  // 	if (err) {
+  // 		res.send(err);
+  // 	} else {
+  // 		res.status(200).json({
+  // 			status : "success",
+  // 			data : result 
+  // 		});
+  // 	}
+  // });
   // Tariff.getTariffByFilter(req.params.GateOriginID, req.params.GateDestinationID, req.params.GolID, function(err, tariff) {
   //   if (err)
   //   res.send(err);
