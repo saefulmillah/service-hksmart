@@ -12,7 +12,7 @@ var Tariff = function(tariff){
 
 
 Tariff.getTariffByFilter = function getTariffByFilter(query, result) {
-    var a = JSON.parse(query.replace('"', ""))
+    var a = query.replace("\"", "")
     console.log(a.GATE_ORIGIN_ID)
     return
     // console.log(a)
