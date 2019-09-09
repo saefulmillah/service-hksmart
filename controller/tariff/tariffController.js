@@ -15,11 +15,11 @@ exports.read_tariff_by_filter = function(req, res) {
   		res.send(err)
   	} else {
 		console.log(resTariff)
-      res.json(resTariff);
-  		// res.status(200).json({
-  		// 	status : "success",
-  		// 	data : JSON.stringify({resTariff}) 
-  		// });
+      // res.json(resTariff);
+  		res.status(200).json({
+  			status : "success",
+  			data : resTariff
+  		});
   	}
   });
 };
