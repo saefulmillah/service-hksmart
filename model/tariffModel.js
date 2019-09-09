@@ -14,11 +14,10 @@ var Tariff = function(tariff){
 Tariff.getTariffByFilter = function getTariffByFilter(query, result) {
     console.log("model log 1 "+query)
     console.log("model log 2 "+query.GATE_ORIGIN_ID)
-    console.log("model log 3 "+query[GATE_ORIGIN_ID])
-    console.log("model log 4 "+query['GATE_ORIGIN_ID'])
     var a = JSON.parse(query);
     console.log(a);
-    return
+    console.log(a.GATE_DESTINATION_ID);
+    // return
     // console.log(a.GATE_ORIGIN_ID)
     // return
     // console.log(a)
@@ -26,7 +25,7 @@ Tariff.getTariffByFilter = function getTariffByFilter(query, result) {
     // console.log(a.GATE_ORIGIN_ID)
     // return
     // console.log("SELECT * FROM map_tariff WHERE GATE_ORIGIN_ID ="+ query.GATE_ORIGIN_ID+"  AND GATE_DESTINATION_ID = "+query.GATE_DESTINATION_ID+" AND GOL_ID = "+query.GOL_ID )
-    sql.query("SELECT * FROM map_tariff WHERE GATE_ORIGIN_ID ="+ query.GATE_ORIGIN_ID+"  AND GATE_DESTINATION_ID = "+query.GATE_DESTINATION_ID+" AND GOL_ID = "+query.GOL_ID , function (err, res) {             
+    sql.query("SELECT * FROM map_tariff WHERE GATE_ORIGIN_ID ="+ a.GATE_ORIGIN_ID+"  AND GATE_DESTINATION_ID = "+a.GATE_DESTINATION_ID+" AND GOL_ID = "+a.GOL_ID , function (err, res) {             
         if(err) {
             console.log("error: ", err);
             result(err, null);
