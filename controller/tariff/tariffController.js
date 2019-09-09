@@ -10,14 +10,14 @@ exports.read_tariff_by_filter = function(req, res) {
   // console.log(a)
   console.log(b)
   // return
-  Tariff.getTariffByFilter(b, function (err, result) {
+  Tariff.getTariffByFilter(b, function (err, resTariff) {
   	if (err) {
   		res.send(err)
   	} else {
-		console.log(JSON.stringify(result))
+		console.log(JSON.stringify({resTariff}))
   		res.status(200).json({
   			status : "success",
-  			data : ({result}) 
+  			data : ({resTariff}) 
   		});
   	}
   });
