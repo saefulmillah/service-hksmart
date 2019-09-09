@@ -14,8 +14,8 @@ exports.read_tariff_by_filter = function(req, res) {
   	if (err) {
   		res.send(err)
   	} else {
-		console.log(JSON.stringify({resTariff}))
-      res.json(JSON.stringify({resTariff}));
+		console.log(JSON.stringify(resTariff))
+      res.json(JSON.stringify(resTariff));
   		// res.status(200).json({
   		// 	status : "success",
   		// 	data : JSON.stringify({resTariff}) 
