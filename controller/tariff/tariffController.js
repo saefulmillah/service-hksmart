@@ -17,7 +17,7 @@ exports.read_tariff_by_filter = function(req, res) {
 		console.log(result)
   		res.status(200).json({
   			status : "success",
-  			data : {result} 
+  			data : ({result}) 
   		});
   	}
   });
