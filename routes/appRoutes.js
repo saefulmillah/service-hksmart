@@ -5,6 +5,7 @@ module.exports = function(app) {
   var branch = require('../controller/cabang/cabangController');
   var gate = require('../controller/gate/gateController');
   var tariff = require('../controller/tariff/tariffController');
+  var restarea = require('../controller/restarea/restareaController');
 
   // todoList Routes
   app.route('/tasks')
@@ -33,6 +34,10 @@ module.exports = function(app) {
   // Tariff Routes
   app.route('/tariff')
     .post(tariff.read_tariff_by_filter);
+
+  // Rest Area Routes
+  app.route('/restarea')
+    .get(restarea.list_all_restarea);
 
 };
 
