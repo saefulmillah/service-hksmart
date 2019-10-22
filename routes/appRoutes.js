@@ -42,7 +42,7 @@ module.exports = function(app) {
 
   // Cctv routes
   app.route('/cctv/:branchID')
-    .get(gate.read_gate_by_branch);
+    .get(cctv.read_cctv_byBranch);
 
 };
 
