@@ -6,6 +6,7 @@ module.exports = function(app) {
   var gate = require('../controller/gate/gateController');
   var tariff = require('../controller/tariff/tariffController');
   var restarea = require('../controller/restarea/restareaController');
+  var cctv = require('../controller/cctv/cctvController');
 
   // todoList Routes
   app.route('/tasks')
@@ -38,6 +39,10 @@ module.exports = function(app) {
   // Rest Area Routes
   app.route('/restarea')
     .get(restarea.list_all_restarea);
+
+  // Cctv routes
+  app.route('/gate/:branchID')
+    .get(gate.read_gate_by_branch);
 
 };
 
