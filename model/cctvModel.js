@@ -16,10 +16,10 @@ var Cctv = function(cctv){
 };
 
 
-Cctv.getCctvByBranch = function getCctvByBranch(query, result) {
+Cctv.getCctvByBranch = function getCctvByBranch(BranchId, result) {
     // console.log("model log 1 "+query)
     // console.log("model log 2 "+query.GATE_ORIGIN_ID)
-    var a = JSON.parse(query);
+    // var a = JSON.parse(query);
     // console.log(a);
     // console.log(a.GATE_DESTINATION_ID);
     // return
@@ -30,7 +30,7 @@ Cctv.getCctvByBranch = function getCctvByBranch(query, result) {
     // console.log(a.GATE_ORIGIN_ID)
     // return
     // console.log("SELECT * FROM map_tariff WHERE GATE_ORIGIN_ID ="+ query.GATE_ORIGIN_ID+"  AND GATE_DESTINATION_ID = "+query.GATE_DESTINATION_ID+" AND GOL_ID = "+query.GOL_ID )
-    sql.query("SELECT * FROM m_cctv WHERE branch_id ="+ a.branch_id, function (err, res) {             
+    sql.query("SELECT * FROM m_cctv WHERE branch_id ="+ BranchId, function (err, res) {             
         if(err) {
             console.log("error: ", err);
             result(err, null);
@@ -41,4 +41,4 @@ Cctv.getCctvByBranch = function getCctvByBranch(query, result) {
     });  
 }
 
-module.exports= Cctv;
+module.exports = Cctv;
