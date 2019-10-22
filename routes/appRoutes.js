@@ -41,7 +41,7 @@ module.exports = function(app) {
     .get(restarea.list_all_restarea);
 
   // Cctv routes
-  app.route('/gate/:branchID')
+  app.route('/cctv/:branchID')
     .get(gate.read_gate_by_branch);
 
 };
