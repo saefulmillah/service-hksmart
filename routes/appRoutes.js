@@ -46,7 +46,7 @@ module.exports = function(app) {
     .get(cctv.read_cctv_byBranch);
 
   // MDD routes
-  app.route('/mdd/LoginMddDevice')
+  app.route('/mdd')
     .post(mdd.login_mdd_device);
 
 };

@@ -1,6 +1,6 @@
 'use strict'
 
-var Mdd = require('../../model/MddModel.js')
+var Mdd = require('../../model/mddModel.js')
 const crypto = require('crypto')
 
 function hash_pass(password) {
@@ -21,6 +21,8 @@ function hash_pass(password) {
 /* STEP 1 -  mendapatkan account info username, password by email */
 exports.login_mdd_device = function (req, res) {
 	var a = req.body
+	console.log(a)
+	return
 	Mdd.GetAccountInfo(a, function (err, result) {
 		var a = result[0];
 		var b = {
@@ -34,6 +36,7 @@ exports.login_mdd_device = function (req, res) {
 			if (err)
 		    	res.send(err)
 		  		res.send({resultLoginDevice})
+		  		console.log(resultLoginDevice)
 		  		// res.json({resultLoginDevice})
 		})
 	})
