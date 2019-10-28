@@ -21,8 +21,8 @@ function hash_pass(password) {
 /* STEP 1 -  mendapatkan account info username, password by email */
 exports.login_mdd_device = function (req, res) {
 	var a = req.body
-	console.log(a)
-	return
+	// console.log(a)
+	// return
 	Mdd.GetAccountInfo(a, function (err, result) {
 		var a = result[0];
 		var b = {
