@@ -7,6 +7,7 @@ module.exports = function(app) {
   var tariff = require('../controller/tariff/tariffController');
   var restarea = require('../controller/restarea/restareaController');
   var cctv = require('../controller/cctv/cctvController');
+  var mdd = require('../controller/mdd/mddController.js');
 
   // todoList Routes
   app.route('/tasks')
@@ -43,6 +44,10 @@ module.exports = function(app) {
   // Cctv routes
   app.route('/cctv/:branchID')
     .get(cctv.read_cctv_byBranch);
+
+  // MDD routes
+  app.route('/mdd/LoginMddDevice')
+    .post(mdd.login_mdd_device);
 
 };
 
