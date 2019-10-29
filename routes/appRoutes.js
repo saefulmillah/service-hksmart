@@ -48,6 +48,8 @@ module.exports = function(app) {
   // MDD routes
   app.route('/mdd/login_device')
     .post(mdd.login_mdd_device);
+  app.route('/mdd/topup_inquiry')
+    .post(mdd.topup_inquiry);
 
 };
 
