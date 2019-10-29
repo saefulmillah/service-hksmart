@@ -45,8 +45,8 @@ exports.login_mdd_device = function (req, res) {
 /* STEP 3 - TOPUP INQUIRY */
 exports.topup_inquiry = function (req, res) {		
 	var a = req.body
-	console.log(a)
-	return
+	// console.log(a)
+	// return
 	Mdd.DoTopupInquiry(a, function (err, result) {	
 		if (err) 
 			res.send(err)

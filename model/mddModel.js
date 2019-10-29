@@ -42,6 +42,18 @@ Mdd.GetAccountInfo = function (query, result) {
 
 Mdd.DoTopupInquiry = function (query, result) {
 	var b = query
+	var c = {
+		device_id : b.device_id,
+		paid_amount : b.paid_amount,
+		card_issuer_id : b.card_issuer_id,
+		device_timestamp : b.device_timestamp
+	}
+
+	var token = b.token
+	console.log(c)
+	console.log(token)
+
+	return
 	var request = require("request")
 
 	var options = {
