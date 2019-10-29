@@ -56,7 +56,7 @@ Mdd.DoTopupInquiry = function (query, result) {
 
 	var options = {
 		method : 'POST',
-		url : '',
+		url : 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_topup_switching/topup/inquiry',
 		headers : {
 			'cache-control' : 'no-cache',
 			'Content-Type' : 'application/json',
@@ -64,7 +64,7 @@ Mdd.DoTopupInquiry = function (query, result) {
 			Accept : 'application/json'			
 		}, 
 		body : b,
-		 json : true
+		json : true
 	}
 
 	request(options, function (error, body) {
