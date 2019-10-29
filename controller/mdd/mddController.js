@@ -49,9 +49,10 @@ exports.topup_inquiry = function (req, res) {
 	var c = JSON.parse(b)
 	// console.log(c)
 	Mdd.DoTopupInquiry(c, function (err, result) {	
+		var res_topup_inquiry = result.body
 		if (err) 
 			res.send(err)
-			res.send({result})
-			console.log(result)
+			res.send({res_topup_inquiry})
+			console.log(res_topup_inquiry)
 	})
 }

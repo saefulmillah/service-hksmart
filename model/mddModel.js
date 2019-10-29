@@ -50,8 +50,8 @@ Mdd.DoTopupInquiry = function (query, result) {
 	}
 
 	var token = a.token
-	// console.log(b)
-	// console.log(token)
+	console.log("body >", b)
+	console.log("token >", token)
 	var request = require("request")
 
 	var options = {
