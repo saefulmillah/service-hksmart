@@ -47,9 +47,8 @@ exports.topup_inquiry = function (req, res) {
 	var a = req.body
 	var b = a.jsonDoTopupInquiry
 	var c = JSON.parse(b)
-	console.log(c)
-	return
-	Mdd.DoTopupInquiry(a, function (err, result) {	
+	// console.log(c)
+	Mdd.DoTopupInquiry(c, function (err, result) {	
 		if (err) 
 			res.send(err)
 			res.send({result})
