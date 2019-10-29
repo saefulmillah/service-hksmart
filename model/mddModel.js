@@ -50,10 +50,8 @@ Mdd.DoTopupInquiry = function (query, result) {
 	}
 
 	var token = a.token
-	console.log(b)
-	console.log(token)
-
-	return
+	// console.log(b)
+	// console.log(token)
 	var request = require("request")
 
 	var options = {
@@ -62,15 +60,10 @@ Mdd.DoTopupInquiry = function (query, result) {
 		headers : {
 			'cache-control' : 'no-cache',
 			'Content-Type' : 'application/json',
-			Authorization : 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWx3YSIsImlzcyI6Imh0dHA6Ly9kZXYtYXBwLm1kZC5jby5pZDo1ODA4MC9NZXJjaGFudE1vYkFwcEhvc3QvdjEvbG9naW4iLCJpYXQiOjE1NzE5OTI3MDIsImV4cCI6MTU3OTk0MTUwMn0.4qUF89WgKFYq3HIBGYr2qBz550K41JrfbfKeS3HiCMuf1R3Kp1tXcP6oigtq4nuxE0N1ikEz-_TvzHiRsJkufg',
+			Authorization : token,
 			Accept : 'application/json'			
 		}, 
-		body : {
-			device_id: '085212169918',
-		     paid_amount: 1100,
-		     card_issuer_id: '3',
-		     device_timestamp: '1571992509'
-		 },
+		body : b,
 		 json : true
 	}
 
