@@ -35,8 +35,11 @@ exports.login_mdd_device = function (req, res) {
 			var resultLoginDevice = reslogin.body
 			if (err)
 		    	res.send(err)
-		  		res.send({resultLoginDevice})
-		  		console.log(resultLoginDevice)
+		  		// res.send({resultLoginDevice})
+		  		var obj = Object.assign(a, resultLoginDevice);
+		  		res.send({obj})
+		  		console.log(obj)
+		  		// console.log(result)
 		  		// res.json({resultLoginDevice})
 		})
 	})
