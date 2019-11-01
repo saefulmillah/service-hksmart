@@ -137,26 +137,26 @@ exports.topup_inquiry_wallet = function (req, res) {
 			// console.log(result)
 	})
 }
-function topup_inquiry_wallet(req) {
-	var a = req
-	// console.log(a)
-	var b = {
-		"topup_amount" : req.paid_amount+req.admin_fee,
-		"device_timestamp" : req.device_timestamp,
-		"token" : req.token
-	}
+// function topup_inquiry_wallet(req) {
+// 	var a = req
+// 	// console.log(a)
+// 	var b = {
+// 		"topup_amount" : req.paid_amount+req.admin_fee,
+// 		"device_timestamp" : req.device_timestamp,
+// 		"token" : req.token
+// 	}
 
-	// console.log(arrInfoPayment)
-	// console.log(b)
-	// return
-	Mdd.DoTopupInquiryWallet(b, function (err, result) {
-		var result = result.body
-		if (err) 
-			res.send(err)
-			res.send(result)
-			// console.log(result)
-	})
-}
+// 	// console.log(arrInfoPayment)
+// 	// console.log(b)
+// 	// return
+// 	Mdd.DoTopupInquiryWallet(b, function (err, result) {
+// 		var result = result.body
+// 		if (err) 
+// 			res.send(err)
+// 			res.send(result)
+// 			// console.log(result)
+// 	})
+// }
 
 /* STEP 5 - CEK STATUS TRANSFER EWALLET */
 /* {
