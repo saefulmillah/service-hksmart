@@ -50,8 +50,8 @@ Mdd.DoTopupInquiry = function (query, result) {
 	}
 
 	var token = a.token
-	console.log("body >", b)
-	console.log("token >", token)
+	// console.log("body >", b)
+	// console.log("token >", token)
 	var request = require("request")
 
 	var options = {
@@ -74,6 +74,73 @@ Mdd.DoTopupInquiry = function (query, result) {
 			result(null, body)
 		}
 	})
+
+}
+
+Mdd.DoTopupInquiryWallet = function (query, result) {
+	var a = query
+	var b = {
+		topup_amount : a.topup_amount,
+		device_timestamp : a.device_timestamp
+	}
+
+	var token = a.token
+
+	var request = require("request")
+
+	var options = {
+		method : 'POST',
+		url : 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_sb/topup/unique_transfer/inquiry',
+		headers : {
+			'cache-control' : 'no-cache',
+			'Content-Type' : 'application/json',
+			Authorization : token,
+			Accept : 'application/json'			
+		}, 
+		body : b,
+		json : true
+	}
+
+	request(options, function (error, body) {
+		if (error) {
+			result(error, null)
+		} else {
+			result(null, body)
+		}
+	})
+}
+
+Mdd.DoCekSaldo = function (query, result) {
+	var a = query
+	var b = {
+		device_timestamp : a.device_timestamp
+	}
+
+	var token = a.token
+
+	var request = require("request")
+
+	var options = {
+		method : 'POST',
+		url : 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_sb/get_account_info/balance',
+		headers : {
+			'cache-control' : 'no-cache',
+			'Content-Type' : 'application/json',
+			Authorization : token,
+			Accept : 'application/json'			
+		}, 
+		body : b,
+		json : true
+	}
+
+	request(options, function (error, body) {
+		if (error) {
+			result(error, null)
+		} else {
+			result(null, body)
+		}
+	})
+
 
 }
 

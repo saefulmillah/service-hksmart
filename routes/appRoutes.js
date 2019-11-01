@@ -50,6 +50,10 @@ module.exports = function(app) {
     .post(mdd.login_mdd_device);
   app.route('/mdd/topup_inquiry')
     .post(mdd.topup_inquiry);
+  app.route('/mdd/topup_inquiry_wallet')
+    .post(mdd.topup_inquiry_wallet);
+  app.route('/mdd/info_payment')
+    .post(mdd.cek_status_transfer);
 
 };
 
