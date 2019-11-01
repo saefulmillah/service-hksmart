@@ -76,9 +76,9 @@ exports.login_mdd_device = function (req, res) {
 exports.topup_inquiry = function (req, res) {		
 	var a = req.body
 	var b = a.jsonDoTopupInquiry
-	// var c = JSON.parse(b)
-	// console.log(a)
-	Mdd.DoTopupInquiry(b, function (err, result) {	
+	var c = JSON.parse(b)
+	console.log(c)
+	Mdd.DoTopupInquiry(c, function (err, result) {	
 		var res_topup_inquiry = result.body
 		var obj = Object.assign(b, res_topup_inquiry)
 		// console.log(b)
@@ -114,16 +114,18 @@ exports.topup_inquiry = function (req, res) {
 /* STEP 4 - TOPUP INQUIRY WALLET */
 exports.topup_inquiry_wallet = function (req, res) {
 	var a = req.body
+	var b = a.jsonDoTopupInquiryWallet
+	var c = JSON.parse(b)
 	// var b = {
 	// 	"topup_amount" : b.paid_amount+b.admin_fee,
 	// 	"device_timestamp" : b.device_timestamp,
 	// 	"token" : b.token
 	// }
-	// console.log(a)
+	console.log(c)
 	// console.log(arrInfoTopupInquiry)
 	// return
 
-	Mdd.DoTopupInquiryWallet(a, function (err, result) {
+	Mdd.DoTopupInquiryWallet(c, function (err, result) {
 		var res_topup_inquiry_wallet = result.body
 		// return
 		if (err) 
