@@ -199,10 +199,10 @@ exports.cek_status_transfer = function (req, res) {
 exports.topup_emoney = function (req, res) {
 	var a = req.body
 	var b = a.json_do_topup
-	// var c = JSON.parse(b)
+	var c = JSON.parse(b)
 	// return
 
-	Mdd.DoCekSaldo(b, function (err, result) {
+	Mdd.DoCekSaldo(c, function (err, result) {
 
 		// console.log('request >', b)
 		// return
@@ -237,7 +237,7 @@ exports.topup_emoney = function (req, res) {
 
 			// console.log('balance amount > ', result.balance_amount)
 			// return
-			Mdd.DoTopup(b, function (err, result) {
+			Mdd.DoTopup(c, function (err, result) {
 				var result = result.body
 				console.log('result topup >', result)
 				if (err) {
