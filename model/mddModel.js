@@ -143,6 +143,7 @@ Mdd.DoCekSaldo = function (query, result) {
 }
 
 Mdd.DoTopup = function (query, result) {
+	var request = require("request")
 	var a = query
 	var b = {
 				entry_mode : "050",
@@ -162,7 +163,10 @@ Mdd.DoTopup = function (query, result) {
 		method : "POST",
 		url : "http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_topup_switching/topup/",
 		headers : {
-
+			'cache-control' : 'no-cache',
+			'Content-Type' : 'application/json',
+			Authorization : token,
+			Accept : 'application/json'
 		},
 		body : b,
 		json : true
