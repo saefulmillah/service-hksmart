@@ -200,7 +200,7 @@ exports.topup_emoney = function (req, res) {
 	var a = req.body
 	var b = a.json_do_topup
 	var c = JSON.parse(b)
-	console.log(c)
+	console.log(b)
 
 	Mdd.DoTopup(c, function (err, result) {
 				var result = result.body
@@ -219,8 +219,8 @@ exports.topup_emoney = function (req, res) {
 		// return
 		var result = result.body
 		
-		if (err)
-		res.send(err)
+		// if (err)
+		// res.send(err)
 		console.log(result)
 		// return
 
@@ -244,11 +244,11 @@ exports.topup_emoney = function (req, res) {
 			// }
 		
 		// console.log(result.balance_amount)
-		if (arrInfoPayment[0].unique_amount < result.balance_amount) {
+		if (12000 < result.balance_amount) {
 
 			console.log('balance amount > ', result.balance_amount)
-			return
-			Mdd.DoTopup(c, function (err, result) {
+			// return
+			Mdd.DoTopup(b, function (err, result) {
 				var result = result.body
 				console.log('result topup >', result)
 				if (err) {
