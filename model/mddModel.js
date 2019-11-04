@@ -140,8 +140,39 @@ Mdd.DoCekSaldo = function (query, result) {
 			result(null, body)
 		}
 	})
+}
 
+Mdd.DoTopup = function (query, result) {
+	var a = query
+	var b = {
+				entry_mode : "050",
+				payment_method : "1",
+				invoice_num : "101",
+				paid_amount : 1100,
+				device_id : "081321186603",
+				card_issuer_id : "3",
+				track_ksn_index : "16FDB",
+				pan_enc : a.pan_enc,
+				pan_len : a.pan_len,
+				pan_hash : a.pan_hash,
+				device_timestamp : "1572431662"
+			}
+	var token = a.token
+	var options = {
+		method : "POST",
+		url : "http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_topup_switching/topup/",
+		headers : {
 
+		},
+		body : b,
+		json : true
+	}
+
+	request(options, function (error, body) {
+		if (error) 
+			result(error, null)
+			result(null, body)
+	})
 }
 
 module.exports = Mdd

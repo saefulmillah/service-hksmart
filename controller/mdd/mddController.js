@@ -77,7 +77,8 @@ exports.topup_inquiry = function (req, res) {
 	var a = req.body
 	var b = a.jsonDoTopupInquiry
 	var c = JSON.parse(b)
-	console.log(c)
+	// console.log(c)
+	// return
 	Mdd.DoTopupInquiry(c, function (err, result) {	
 		var res_topup_inquiry = result.body
 		var obj = Object.assign(b, res_topup_inquiry)
@@ -85,29 +86,6 @@ exports.topup_inquiry = function (req, res) {
 		if (err) 
 			res.send(err)
 			res.send({res_topup_inquiry})
-			// arrInfoTopupInquiry.push(res_topup_inquiry)
-			// var c = obj
-			// // console.log(c)
-			// var d = {
-			// 	"topup_amount" : c.paid_amount+c.admin_fee,
-			// 	"device_timestamp" : c.device_timestamp,
-			// 	"token" : c.token
-			// }
-			// // console.log(b)
-			// // return
-			// Mdd.DoTopupInquiryWallet(d, function (err, result) {
-			// 	var res_info_payment = result.body
-			// 	var obj_detail_payment = Object.assign(res_topup_inquiry, res_info_payment)
-			// 	// console.log(obj_detail_payment)
-			// 	// return
-			// 	if (err) 
-			// 		res.send(err)
-			// 		res.send({obj_detail_payment})
-			// 		arrInfoPayment.push(res_info_payment)
-			// 		// return result
-			// 		// console.log(result)
-			// })
-			// // console.log(res_topup_inquiry)
 	})
 }
 
@@ -121,7 +99,7 @@ exports.topup_inquiry_wallet = function (req, res) {
 	// 	"device_timestamp" : b.device_timestamp,
 	// 	"token" : b.token
 	// }
-	console.log(c)
+	// console.log(b)
 	// console.log(arrInfoTopupInquiry)
 	// return
 
@@ -132,33 +110,17 @@ exports.topup_inquiry_wallet = function (req, res) {
 			res.send(err)
 			res.send({res_topup_inquiry_wallet})
 			console.log(res_topup_inquiry_wallet)
-			// arrInfoPayment.push(res_info_payment)
+			arrInfoPayment.push(res_topup_inquiry_wallet)
 			// return result
 			// console.log(result)
 	})
 }
-// function topup_inquiry_wallet(req) {
-// 	var a = req
-// 	// console.log(a)
-// 	var b = {
-// 		"topup_amount" : req.paid_amount+req.admin_fee,
-// 		"device_timestamp" : req.device_timestamp,
-// 		"token" : req.token
-// 	}
 
-// 	// console.log(arrInfoPayment)
-// 	// console.log(b)
-// 	// return
-// 	Mdd.DoTopupInquiryWallet(b, function (err, result) {
-// 		var result = result.body
-// 		if (err) 
-// 			res.send(err)
-// 			res.send(result)
-// 			// console.log(result)
-// 	})
-// }
 
-/* STEP 5 - CEK STATUS TRANSFER EWALLET */
+/* STEP 5 - CEK STATUS TRANSFER EWALLET 
+	melakukan pengecekan pembayaran, apabila pembayaran telah dilakukan dan disistem sudah diverifikasi
+	maka bisa melakukan topup emoney
+	pengecekan dilakukan dengan auto reload 1 menit sekali */
 /* {
     "response_code": "0034",
     "midware_timestamp": "1572579197",
@@ -178,7 +140,7 @@ exports.cek_status_transfer = function (req, res) {
 		token : a.token,
 		device_timestamp : a.device_timestamp,
 	}
-	
+
 	// console.log(arrInfoPayment[0].unique_amount)
 	// return
 	Mdd.DoCekSaldo(b, function (err, result) {
@@ -210,6 +172,74 @@ exports.cek_status_transfer = function (req, res) {
 			console.log(resInfoPayment)
 			res.send(resInfoPayment)
 			// console.log(result)
+		}
+	})
+
+
+}
+
+/*
+
+{
+	"entry_mode" : "050",
+	"payment_method" : "1",
+	"invoice_num" : "101",
+	"paid_amount" : 1100,
+	"device_id" : "081321186603",
+	"card_issuer_id" : "3",
+	"track_ksn_index" : "16FDB",
+	"pan_enc" : "7AD53A98DE1B98BC",
+	"pan_len" : 16,
+	"pan_hash" : "fb849996f9c082a81a9ef7c0d2ebfee3fe3b7ff07807981367d533e964c046fb941f6f3d02a945100ffaabbb97de9d60b0f2c2d3dad5a2ec179d05bd5fdf77a2",
+	"device_timestamp" : "1572431662"
+}
+
+*/
+
+exports.topup_emoney = function (req, res) {
+	var a = req.body
+	var b = a.jsonDoTopup
+	var c = JSON.parse(b)
+	// console.log(b)
+	// return
+
+	Mdd.DoCekSaldo(c, function (err,result) {
+		var result = result.body
+		
+		if (err)
+		res.send(err)
+		// console.log(result)
+		// return
+
+		/*
+			{
+			    "reff_no": "MDD-572516059",
+			    "response_code": "00B0",
+			    "admin_fee": 900,
+			    "midware_timestamp": "1572516057",
+			    "paid_amount": 1100,
+			    "topup_amount": 200,
+			    "mid": "2ad3755bd69f70734b79bf828eeacd3a",
+			    "pending_balance": "",
+			    "provider_id": "",
+			    "message": "TOPUP APPROVED.",
+			    "version": {
+			        "emoney_ts_ver": "v0.3.0",
+			        "device_crypto_ver": "v0.3.0"
+			    },
+			    "status": "OK"
+			}
+		*/
+
+		if (arrInfoPayment[0].unique_amount < result.balance_amount) {
+			Mdd.DoTopup(c, function (err, result) {
+				var result = result.body
+				if (err) {
+					res.send(err)
+				} else {
+					res.send(result)
+				}
+			})
 		}
 	})
 }
