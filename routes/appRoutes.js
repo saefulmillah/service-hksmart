@@ -54,7 +54,7 @@ module.exports = function(app) {
     .post(mdd.topup_inquiry_wallet)
   // app.route('/mdd/info_payment')
   //   .post(mdd.cek_status_transfer)
-  app.route('/mdd/topup')
+  app.route('/mdd/topup_emoney')
     .post(mdd.topup_emoney)
 
 }

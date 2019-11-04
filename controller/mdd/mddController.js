@@ -198,12 +198,12 @@ exports.cek_status_transfer = function (req, res) {
 
 exports.topup_emoney = function (req, res) {
 	var a = req.body
-	var b = a.jsonDoTopup
-	var c = JSON.parse(b)
+	var b = a.json_do_topup
+	// var c = JSON.parse(b)
 	// console.log(b)
 	// return
 
-	Mdd.DoCekSaldo(c, function (err,result) {
+	Mdd.DoCekSaldo(b, function (err,result) {
 		var result = result.body
 		
 		if (err)
