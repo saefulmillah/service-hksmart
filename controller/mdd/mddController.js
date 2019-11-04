@@ -200,8 +200,8 @@ exports.topup_emoney = function (req, res) {
 	var a = req.body
 	var b = a.json_do_topup
 	// var c = JSON.parse(b)
-	console.log(b)
-	// return
+	console.log('request', b)
+	return
 
 	Mdd.DoCekSaldo(b, function (err,result) {
 		var result = result.body
