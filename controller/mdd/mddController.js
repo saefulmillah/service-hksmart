@@ -212,50 +212,50 @@ exports.topup_emoney = function (req, res) {
 			})
 	// return
 
-	// Mdd.DoCekSaldo(c, function (err, result) {
+	Mdd.DoCekSaldo(c, function (err, result) {
 
-	// 	// console.log('request >', b)
-	// 	// return
-	// 	var result = result.body
+		// console.log('request >', b)
+		// return
+		var result = result.body
 		
-	// 	if (err)
-	// 	res.send(err)
-	// 	console.log(result)
-	// 	// return
+		if (err)
+		res.send(err)
+		console.log(result)
+		// return
 
 		
-	// 		{
-	// 		    "reff_no": "MDD-572516059",
-	// 		    "response_code": "00B0",
-	// 		    "admin_fee": 900,
-	// 		    "midware_timestamp": "1572516057",
-	// 		    "paid_amount": 1100,
-	// 		    "topup_amount": 200,
-	// 		    "mid": "2ad3755bd69f70734b79bf828eeacd3a",
-	// 		    "pending_balance": "",
-	// 		    "provider_id": "",
-	// 		    "message": "TOPUP APPROVED.",
-	// 		    "version": {
-	// 		        "emoney_ts_ver": "v0.3.0",
-	// 		        "device_crypto_ver": "v0.3.0"
-	// 		    },
-	// 		    "status": "OK"
-	// 		}
+			// {
+			//     "reff_no": "MDD-572516059",
+			//     "response_code": "00B0",
+			//     "admin_fee": 900,
+			//     "midware_timestamp": "1572516057",
+			//     "paid_amount": 1100,
+			//     "topup_amount": 200,
+			//     "mid": "2ad3755bd69f70734b79bf828eeacd3a",
+			//     "pending_balance": "",
+			//     "provider_id": "",
+			//     "message": "TOPUP APPROVED.",
+			//     "version": {
+			//         "emoney_ts_ver": "v0.3.0",
+			//         "device_crypto_ver": "v0.3.0"
+			//     },
+			//     "status": "OK"
+			// }
 		
-	// 	// console.log(result.balance_amount)
-	// 	if (24000 < result.balance_amount) {
+		// console.log(result.balance_amount)
+		if (arrInfoPayment[0].unique_amount < result.balance_amount) {
 
-	// 		// console.log('balance amount > ', result.balance_amount)
-	// 		// return
-	// 		// Mdd.DoTopup(c, function (err, result) {
-	// 		// 	var result = result.body
-	// 		// 	console.log('result topup >', result)
-	// 		// 	if (err) {
-	// 		// 		res.send(err)
-	// 		// 	} else {
-	// 		// 		res.send(result)
-	// 		// 	}
-	// 		// })
-	// 	}
-	// })
+			console.log('balance amount > ', result.balance_amount)
+			return
+			Mdd.DoTopup(c, function (err, result) {
+				var result = result.body
+				console.log('result topup >', result)
+				if (err) {
+					res.send(err)
+				} else {
+					res.send(result)
+				}
+			})
+		}
+	})
 }
