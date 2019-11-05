@@ -149,7 +149,7 @@ Mdd.DoTopup = function (query, result) {
 				entry_mode : "050",
 				payment_method : "1",
 				invoice_num : a.invoice_num,
-				paid_amount : 1100,
+				paid_amount : a.topup_amount,
 				device_id : a.device_id,
 				card_issuer_id : "3",
 				track_ksn_index : a.track_ksn_index,
