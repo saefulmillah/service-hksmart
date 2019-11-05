@@ -2,6 +2,7 @@
 
 var Mdd = require('../../model/mddModel.js')
 let arr_info_payment = [];
+let arrInfoTopupInquiry = [];
 const crypto = require('crypto')
 var ts = Math.round((new Date()).getTime() / 1000);
 
@@ -110,7 +111,7 @@ exports.topup_inquiry_wallet = function (req, res) {
 			res.send({res_topup_inquiry_wallet})
 			console.log(res_topup_inquiry_wallet)
 			arr_info_payment.push(res_topup_inquiry_wallet)
-		
+			// return result
 			// console.log(result)
 	})
 }
@@ -141,7 +142,7 @@ exports.cek_status_transfer = function (req, res) {
 	}
 
 	// console.log(arr_info_payment[0].unique_amount)
-
+	// return
 	Mdd.DoCekSaldo(b, function (err, result) {
 		var result = result.body
 		let resInfoPayment
@@ -154,7 +155,7 @@ exports.cek_status_transfer = function (req, res) {
 			// return
 			// if 100 <== 200
 			if (arr_info_payment[0].unique_amount > res_cek_saldo.balance_amount) {
-			
+				resInfoPayment = {
 									payment_message : "SALDO_KURANG",
 									payment_code_status : "00",
 									payment_status : "MENUNGGU_TRANSFER",
