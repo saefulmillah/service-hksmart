@@ -274,6 +274,7 @@ exports.topup_emoney_history = function (req, res) {
 			res.json(err)
 		} else {
 			console.log({res_topup_history})
+			console.log(result.body)
 			res.json({res_topup_history})
 		}
 	})
