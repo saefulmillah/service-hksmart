@@ -269,13 +269,14 @@ exports.topup_emoney_history = function (req, res) {
 	var c = JSON.parse(b)
 	console.log(c)
 	Mdd.getTopupHistory(c, function (err, result) {
-		var res_topup_history = result.body
+		var res_topup_history = result
 		if (err) {
 			res.json(err)
 		} else {
 			// console.log({res_topup_history})
 			// console.log(result.body)
-			console.log(result)
+			// console.log(result)
+			// console.log(result)
 			res.json({res_topup_history})
 		}
 	})
