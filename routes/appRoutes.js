@@ -8,6 +8,7 @@ module.exports = function(app) {
   var restarea = require('../controller/restarea/restareaController')
   var cctv = require('../controller/cctv/cctvController')
   var mdd = require('../controller/mdd/mddController.js')
+  var csi = require('../controller/csi/CsiController.js')
 
   // todoList Routes
   app.route('/tasks')
@@ -56,6 +57,10 @@ module.exports = function(app) {
   //   .post(mdd.cek_status_transfer)
   app.route('/mdd/topup_emoney')
     .post(mdd.topup_emoney)
+  app.route('/feedback/get_data')
+    .post(csi.read_feedback)
+  app.route('/rating/get_data')
+    .post(csi.read_rating)
 
 }
 

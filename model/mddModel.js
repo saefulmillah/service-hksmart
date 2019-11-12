@@ -253,7 +253,7 @@ Mdd.DoUpdateTransaksi = function (query) {
 	}
 	console.log("DoUpdateTransaksi > ", b)
 	// return
-	sql.query("UPDATE t_topup SET no_invoice = ?, status_topup = ?, card_issuer_id = ?, device_id = ?, entry_mode = ?, payment_method = ?, reff_no = ?, updated_at = ? WHERE device_id = ? AND status_topup!='OK'", [a.invoice_num, a.status, a.card_issuer_id, a.device_id, a.entry_mode, a.payment_method, a.reff_no, ts, a.device_id])
+	sql.query("UPDATE t_topup SET no_invoice = ?, status_topup = ?, card_issuer_id = ?, device_id = ?, entry_mode = ?, payment_method = ?, reff_no = ?, updated_at = ? WHERE device_id = ? AND status_topup==null", [a.invoice_num, a.status, a.card_issuer_id, a.device_id, a.entry_mode, a.payment_method, a.reff_no, ts, a.device_id])
 }
 
 module.exports = Mdd

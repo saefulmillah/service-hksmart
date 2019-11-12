@@ -46,6 +46,7 @@ Branch.getAllBranch = function (result) {
                 }
             });   
 };
+
 Branch.updateById = function(id, branch, result){
   sql.query("UPDATE ms_branch SET branch_name = ? WHERE ID = ?", [branch.branch_name, id], function (err, res) {
           if(err) {
