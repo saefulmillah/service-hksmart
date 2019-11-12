@@ -256,5 +256,17 @@ Mdd.DoUpdateTransaksi = function (query) {
 	sql.query("UPDATE t_topup SET no_invoice = ?, status_topup = ?, card_issuer_id = ?, device_id = ?, entry_mode = ?, payment_method = ?, reff_no = ?, updated_at = ? WHERE device_id = ? AND status_topup==null", [a.invoice_num, a.status, a.card_issuer_id, a.device_id, a.entry_mode, a.payment_method, a.reff_no, ts, a.device_id])
 }
 
+Mdd.getTopupHistory = function (query, result) {
+	var a = query
+	var q = "SELECT * FROM t_topup ORDER BY id DESC LIMIT 5"
+	sql.query(q, function (err, res) {
+		if (err) {
+			result(err, null)
+		} else {
+			result(null, res)
+		}
+	})
+}
+
 module.exports = Mdd
 

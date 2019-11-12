@@ -261,3 +261,19 @@ exports.topup_emoney = function (req, res) {
 		}
 	})
 }
+
+
+exports.topup_emoney_history = function (req, res) {
+	var a = req.body
+	var b = a.json_get_topup_history
+	var c = JSON.parse(b)
+
+	Mdd.getTopupHistory(c, function (err, result) {
+		var res_topup_history = result.body
+		if (err) {
+			res.json(err)
+		} else {
+			res.json({res_topup_history})
+		}
+	})
+}
