@@ -110,7 +110,12 @@ exports.login = function (req, res) {
 					res.send(err)
 				} else {
 					// res.send({resultLoginDevice})
-			  		var obj = Object.assign(a, resultLoginDevice);
+			  		var obj = {
+								code : "0001",
+								status : "SUCCESS",
+								message : "USER DITEMUKAN",
+								data : Object.assign(a, resultLoginDevice)
+							}
 			  		res.send({obj})
 			  		console.log(obj)
 			  		// console.log(result)
