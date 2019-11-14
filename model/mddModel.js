@@ -315,6 +315,7 @@ Mdd.DoInsertTransaksi = function (query) {
 		admin_fee: 900,
         device_timestamp: a.midware_timestamp,
         device_id : a.device_id,
+        card_issuer_id : a.card_issuer_id,
         no_ue : a.no_kartu,
         paid_amount: a.unique_amount,
         topup_amount: a.topup_amount,
