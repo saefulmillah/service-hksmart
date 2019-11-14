@@ -89,6 +89,7 @@ exports.login = function (req, res) {
 	var a = req.body
 	var b = a.jsonLogin
 	var c = JSON.parse(b)
+	console.log(b)
 	Mdd.GetAccountInfoByUsername(c, function (err, result) {
 		if (result.length > 0) {
 			var a = result[0];
