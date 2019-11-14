@@ -89,6 +89,7 @@ exports.login = function (req, res) {
 	var a = req.body
 	var b = a.jsonLogin
 	var c = JSON.parse(b)
+	console.log(a)
 	console.log(b)
 	console.log(c)
 	return
