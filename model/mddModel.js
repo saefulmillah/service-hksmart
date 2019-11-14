@@ -310,7 +310,7 @@ Mdd.GetAccountInfo = function (query, result) {
 }
 
 Mdd.DoInsertTransaksi = function (query) {
-	var a = query.res_topup_inquiry_wallet
+	var a = query
 	var b = {
 		admin_fee: 900,
         device_timestamp: a.midware_timestamp,
