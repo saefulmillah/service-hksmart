@@ -136,12 +136,25 @@ Mdd.doInsertRegistered = function (query) {
 	sql.query(q, b)
 }
 
-
-
 Mdd.GetAccountInfo = function (query, result) {
 	var b = query
+	console.log(b)
+	return
+	// sql.query("SELECT * FROM m_user WHERE email = ?", b.email, function (err, res) {
+	// 	console.log('this.sql', this.sql) //command/query
+	// 	if(err) {
+ //            result(err, null);
+ //        }
+ //        else{
+ //            result(null, res);
+ //        }
+	// })
+}
 
-	sql.query("SELECT * FROM m_user WHERE email = ?", b.email, function (err, res) {
+Mdd.GetAccountInfoByUsername = function (query, result) {
+	var b = query
+
+	sql.query("SELECT * FROM m_user WHERE username = ? AND password = ?", [b.username, b.password], function (err, res) {
 		if(err) {
             result(err, null);
         }

@@ -49,27 +49,77 @@ exports.registrasi_mdd_user = function (req, res) {
 /* STEP 1 -  mendapatkan account info username, password by email */
 exports.login_mdd_device = function (req, res) {
 	var a = req.body
+	// console.log(a)
+	// return
 	Mdd.GetAccountInfo(a, function (err, result) {
-		var a = result[0];
-		var b = {
-			username : a.username,
-			pass_hash : hash_pass(a.password),
-			device_timestamp : ts.toString()
+		if (result.length > 0) {
+			var a = result[0];
+			// console.log(a)
+			// return
+			var b = {
+				username : a.username,
+				pass_hash : hash_pass(a.password),
+				device_timestamp : ts.toString()
+			}
+			// console.log(b)
+			// return
+			/* STEP 2 - HIT API Login MDD dengan parameter username dan password yang didapatkan di STEP 1 */
+			Mdd.LoginDevice(b, function (err, reslogin) {
+				var resultLoginDevice = reslogin.body
+				if (err)
+			    	res.send(err)
+			  		// res.send({resultLoginDevice})
+			  		var obj = Object.assign(a, resultLoginDevice);
+			  		res.send({obj})
+			  		console.log(obj)
+			  		// console.log(result)
+			  		// res.json({resultLoginDevice})
+			})
+		} else {
+			res.send({
+				code : "0000",
+				status : "ERROR",
+				message : "USER TIDAK ADA"
+			})
 		}
-		// console.log(b)
-		// return
-		/* STEP 2 - HIT API Login MDD dengan parameter username dan password yang didapatkan di STEP 1 */
-		Mdd.LoginDevice(b, function (err, reslogin) {
-			var resultLoginDevice = reslogin.body
-			if (err)
-		    	res.send(err)
-		  		// res.send({resultLoginDevice})
-		  		var obj = Object.assign(a, resultLoginDevice);
-		  		res.send({obj})
-		  		console.log(obj)
-		  		// console.log(result)
-		  		// res.json({resultLoginDevice})
-		})
+	})
+}
+
+exports.login = function (req, res) {
+	var a = req.body
+	var b = a.jsonLogin
+	var c = JSON.parse(b)
+	Mdd.GetAccountInfoByUsername(c, function (err, result) {
+		if (result.length > 0) {
+			var a = result[0];
+			var b = {
+				username : a.username,
+				pass_hash : hash_pass(a.password),
+				device_timestamp : ts.toString()
+			}
+			// console.log(b)
+			// return
+			/* STEP 2 - HIT API Login MDD dengan parameter username dan password yang didapatkan di STEP 1 */
+			Mdd.LoginDevice(b, function (err, reslogin) {
+				var resultLoginDevice = reslogin.body
+				if (err){
+					res.send(err)
+				} else {
+					// res.send({resultLoginDevice})
+			  		var obj = Object.assign(a, resultLoginDevice);
+			  		res.send({obj})
+			  		console.log(obj)
+			  		// console.log(result)
+			  		// res.json({resultLoginDevice})
+				}
+			})
+		} else {
+			res.send({
+				code : "0000",
+				status : "ERROR",
+				message : "USER TIDAK ADA"
+			})
+		}
 	})
 }
 
