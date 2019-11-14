@@ -265,9 +265,6 @@ exports.topup_emoney = function (req, res) {
 		} else {
 			console.log('result cek saldo >', result)
 			if (c.topup_amount < result.balance_amount) {
-
-			// 	console.log('balance amount > ', result.balance_amount)
-			// 	// return
 				Mdd.DoTopup(c, function (err, result) {
 					var result = result.body
 					console.log('result topup >', result)
@@ -275,14 +272,11 @@ exports.topup_emoney = function (req, res) {
 						res.send(err)
 					} else {
 						res.send(result)
-						// var obj_topup_emoney = Object.assign(c, result);
-						// console.log("obj_topup_emoney >", obj_topup_emoney)
-						// console.log(result.balance_amount)
-						// Mdd.DoUpdateTransaksi(obj_topup_emoney)
 					}
 				})
 			} else {
 				result = {
+					response_code : "0000"
 					status : "FAILED",
 					message : "Saldo Kurang",
 					saldo : result.balance_amount
