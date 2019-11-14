@@ -126,6 +126,7 @@ exports.topup_inquiry_wallet = function (req, res) {
 	var a = req.body
 	var b = a.jsonDoTopupInquiryWallet
 	var c = JSON.parse(b)
+	console.log(c)
 	// var c = a					
 
 	Mdd.DoTopupInquiryWallet(c, function (err, result) {
@@ -135,7 +136,7 @@ exports.topup_inquiry_wallet = function (req, res) {
 		} else {
 			var obj_topup_wallet = Object.assign(c, res_topup_inquiry_wallet);
 			console.log("obj_topup_wallet >", obj_topup_wallet)
-			
+
 			res.json({res_topup_inquiry_wallet})			
 			Mdd.DoInsertTransaksi(obj_topup_wallet)
 			console.log("res_topup_inquiry_wallet >", res_topup_inquiry_wallet)		
