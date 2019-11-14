@@ -107,10 +107,10 @@ exports.topup_inquiry = function (req, res) {
 	Mdd.DoTopupInquiry(c, function (err, result) {	
 		var res_topup_inquiry = result.body
 		var obj = Object.assign(b, res_topup_inquiry)
-		// console.log(b)
 		if (err) 
 			res.send(err)
 			res.send({res_topup_inquiry})
+			console.log("res_topup_inquiry >", b)
 	})
 }
 
@@ -134,7 +134,8 @@ exports.topup_inquiry_wallet = function (req, res) {
 			res.send(err)
 		} else {
 			res.send({res_topup_inquiry_wallet})			
-			Mdd.DoInsertTransaksi({res_topup_inquiry_wallet})		
+			Mdd.DoInsertTransaksi({res_topup_inquiry_wallet})
+			console.log("res_topup_inquiry_wallet >", res_topup_inquiry_wallet)		
 		}			
 	})
 }
@@ -271,6 +272,10 @@ exports.topup_emoney = function (req, res) {
 					if (err) {
 						res.send(err)
 					} else {
+						// var obj_topup_emoney = Object.assign(c, result);
+						// console.log("obj_topup_emoney >", obj_topup_emoney)
+						// console.log(result.balance_amount)
+						// Mdd.DoUpdateTransaksi(obj_topup_emoney)
 						res.send(result)
 					}
 				})
@@ -299,9 +304,6 @@ exports.topup_emoney_history = function (req, res) {
 		if (err) {
 			res.json(err)
 		} else {
-			// console.log({res_topup_history})
-			// console.log(result.body)
-			// console.log(result)
 			console.log(res_topup_history)
 			res.json({res_topup_history})
 		}
