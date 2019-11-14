@@ -127,7 +127,7 @@ exports.login = function (req, res) {
 				code : "0000",
 				status : "ERROR",
 				message : "USER TIDAK ADA",
-				data : ""
+				data : "0"
 			}
 			res.send({obj})
 		}
