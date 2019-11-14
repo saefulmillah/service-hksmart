@@ -314,6 +314,8 @@ Mdd.DoInsertTransaksi = function (query) {
 	var b = {
 		admin_fee: 900,
         device_timestamp: a.midware_timestamp,
+        device_id : a.device_id,
+        no_ue : a.no_kartu,
         paid_amount: a.unique_amount,
         topup_amount: a.topup_amount,
         merchant_id: a.merchant_id,
@@ -321,11 +323,11 @@ Mdd.DoInsertTransaksi = function (query) {
 		created_by : a.merchant_id,
 		updated_at : ts,
 		updated_by : a.merchant_id,
-		status_confirm : "1"
+		status_confirm : null
 	}
 
-	console.log("DoInsertTransaksi >", query)
-	return
+	// console.log("DoInsertTransaksi >", query)
+	// return
 	var status = 'OK' 
 	console.log('status >', status)
 	console.log('insert >', b)
