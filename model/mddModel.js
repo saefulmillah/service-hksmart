@@ -16,13 +16,16 @@ Mdd.LoginDevice = function (query, result) {
 	var b = query
 	var request = require("request")
 
-	var options = { method: 'POST',
-	  url: 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/login',
-	  headers: 
-	   { 'cache-control': 'no-cache',
-	     'Content-Type': 'application/json' },
-	  body: b,
-	  json: true }
+	var options = { 
+		method: 'POST',
+	  	url: 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/login',
+	  	headers: { 
+	  				'cache-control': 'no-cache',
+	     			'Content-Type': 'application/json' 
+	     		},
+		body: b,
+		json: true 
+	}
 
 	request(options, function (error, body) {
 		  if (error) { 
@@ -32,6 +35,108 @@ Mdd.LoginDevice = function (query, result) {
 		  }
 	})
 }
+
+Mdd.doLoginMerchantGroup = function (query) {
+	return new Promise(resolve => {
+		var b = query
+		var request = require("request")
+
+		var options = { 
+			method: 'POST',
+		  	url: 'http://dev-web.mdd.co.id/api/v2/login_check',
+		  	headers: { 
+		  				'cache-control': 'no-cache',
+		     			'Content-Type': 'application/json' 
+		     		},
+			body: b,
+			json: true 
+		}
+
+		request(options, function (error, body) {
+			  if (error) { 
+			  	console.log(error)
+			  } else {
+			  	resolve(body)
+			  }
+		})
+	})
+}
+
+Mdd.doRegistrasiUser = async function (query, result) {
+		let login = {
+						username : "saeful",
+						password : "123456"
+					}
+		var a = query
+		var b = {
+					fullname : a.fullname,
+					username : a.username,
+					password : a.password,
+					address : a.address,
+					email : a.email,
+					phone : a.phone
+				}
+
+		let p1 = await Mdd.doLoginMerchantGroup(login)
+		var c = p1.body
+	
+		var request = require("request")
+		var options = { 
+				method: 'POST',
+			  	url: 'http://dev-web.mdd.co.id/api/v2/mobile/user/merchants/registrations',
+			  	headers: { 
+			     			'Content-Type': 'application/json',
+			     			'Authorization': 'Bearer '+c.token
+			     		},
+				body: b,
+				json: true 
+			}
+
+		request(options, function (error, response) {
+		  	if (error) {
+				console.log(error)
+			} else {
+				result(null, response.body)
+				var objRegistered = Object.assign(b, response.body)
+				Mdd.doInsertRegistered(objRegistered)
+				// console.log("result request >",result.body)
+			}
+		})
+	// console.log(p1.body)
+	// console.log(options)
+}
+
+Mdd.doInsertRegistered = function (query) {
+	var a = query
+	var b = {
+		first_name : a.fullname,
+		last_name : '',
+		username : a.username,
+		password : a.password,
+		email : a.email,
+		phone : a.phone,
+		sex : "L",
+		birthdate : null,
+		is_active : 1	,
+		device_id : a.phone,
+		emv_ksn : a.data.emv_ksn,
+		emv_ipek : a.data.emv_ipek,
+		pin_ksn : a.data.pin_ksn,
+		pin_ipek : a.data.pin_ipek,
+		track_ksn : a.data.track_ksn,
+		track_ipek : a.data.track_ipek,
+		pin_block_mk_universal : a.data.pin_block_mk_universal,
+		pin_block_wk_universal : a.data.pin_block_wk_universal,
+		created_at : ts,
+		created_by : a.username,
+
+	}
+
+	var q = "INSERT INTO m_user SET ?"
+	sql.query(q, b)
+}
+
+
 
 Mdd.GetAccountInfo = function (query, result) {
 	var b = query

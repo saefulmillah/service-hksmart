@@ -55,6 +55,8 @@ module.exports = function(app) {
     .post(mdd.topup_inquiry_wallet)
   app.route('/mdd/topup_emoney_history')
     .post(mdd.topup_emoney_history)
+  app.route('/mdd/registrasi')
+    .post(mdd.registrasi_mdd_user)
   // app.route('/mdd/info_payment')
   //   .post(mdd.cek_status_transfer)
   app.route('/mdd/topup_emoney')

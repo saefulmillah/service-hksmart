@@ -20,6 +20,31 @@ function hash_pass(password) {
 
 	return hash_sha256
 }
+/*LOGIN MERCHANT GROUP*/
+exports.login_merchant_group = function (req, res) {
+	var a = {
+		username:"saeful",
+		password:"123456"
+	}
+	Mdd.doLoginMerchantGroup(a, function (err, result) {
+		if (err) {
+			res.send(err)
+		} else {
+			res.send(result)
+		}
+	})
+}
+/*REGISTRASI*/
+exports.registrasi_mdd_user = function (req, res) {
+	var a = req.body
+	Mdd.doRegistrasiUser(a, function (err, result) {
+		if (err) {
+			res.send(err)
+		} else {
+			res.send(result)
+		}
+	})
+}
 
 /* STEP 1 -  mendapatkan account info username, password by email */
 exports.login_mdd_device = function (req, res) {
@@ -258,7 +283,13 @@ exports.topup_emoney = function (req, res) {
 					// Mdd.DoUpdateTransaksi(obj_topup_emoney)
 				}
 			})
-		}
+		} else {
+			res.send({
+				status : "FAILED",
+				message : "Saldo Kurang",
+				saldo : result.balance_amount
+			})
+		}	
 	})
 }
 
