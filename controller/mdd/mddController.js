@@ -289,6 +289,7 @@ exports.topup_emoney = function (req, res) {
 				message : "Saldo Kurang",
 				saldo : result.balance_amount
 			}
+			console.log("kurang saldo >", result)
 			res.send(result)
 		}	
 	})
