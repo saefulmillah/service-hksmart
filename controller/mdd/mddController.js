@@ -133,7 +133,7 @@ exports.topup_inquiry_wallet = function (req, res) {
 		if (err) {
 			res.json(err)
 		} else {
-			var obj_topup_wallet = Object.assign(c, result);
+			var obj_topup_wallet = Object.assign(c, res_topup_inquiry_wallet);
 			console.log("obj_topup_wallet >", obj_topup_wallet)
 
 			res.json({res_topup_inquiry_wallet})			
