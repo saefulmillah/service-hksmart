@@ -118,11 +118,12 @@ exports.login = function (req, res) {
 				}
 			})
 		} else {
-			res.send({
+			var obj = {
 				code : "0000",
 				status : "ERROR",
 				message : "USER TIDAK ADA"
-			})
+			}
+			res.send({obj})
 		}
 	})
 }
