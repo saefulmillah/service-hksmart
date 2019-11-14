@@ -276,7 +276,7 @@ exports.topup_emoney = function (req, res) {
 				})
 			} else {
 				result = {
-					response_code : "0000"
+					response_code : "0000",
 					status : "FAILED",
 					message : "Saldo Kurang",
 					saldo : result.balance_amount
