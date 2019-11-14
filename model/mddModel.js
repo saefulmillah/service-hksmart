@@ -324,6 +324,8 @@ Mdd.DoInsertTransaksi = function (query) {
 		status_confirm : "1"
 	}
 
+	console.log(query)
+	return
 	var status = 'OK' 
 	console.log('status >', status)
 	console.log('insert >', b)
