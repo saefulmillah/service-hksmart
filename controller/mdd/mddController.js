@@ -41,7 +41,7 @@ exports.registrasi_mdd_user = function (req, res) {
 	var c = JSON.parse(b)
 	console.log(c)
 	return
-	Mdd.doRegistrasiUser(a, function (err, result) {
+	Mdd.doRegistrasiUser(c, function (err, result) {
 		if (err) {
 			res.send(err)
 		} else {
@@ -167,7 +167,7 @@ exports.topup_inquiry = function (req, res) {
 	var a = req.body
 	var b = a.jsonDoTopupInquiry
 	var c = JSON.parse(b)
-	// console.log(c)
+	console.log(c)
 	// return
 	Mdd.DoTopupInquiry(c, function (err, result) {	
 		var res_topup_inquiry = result.body
@@ -175,7 +175,7 @@ exports.topup_inquiry = function (req, res) {
 		if (err) 
 			res.send(err)
 			res.send({res_topup_inquiry})
-			console.log("res_topup_inquiry >", b)
+			console.log("res_topup_inquiry >", res_topup_inquiry)
 	})
 }
 

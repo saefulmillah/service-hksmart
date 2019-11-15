@@ -69,7 +69,7 @@ Mdd.doRegistrasiUser = async function (query, result) {
 					}
 		var a = query
 		var b = {
-					fullname : a.fullname,
+					fullname : a.first_name+" "+a.last_name,
 					username : a.username,
 					password : a.password,
 					address : a.address,
@@ -138,17 +138,17 @@ Mdd.doInsertRegistered = function (query) {
 
 Mdd.GetAccountInfo = function (query, result) {
 	var b = query
-	console.log(b)
-	return
-	// sql.query("SELECT * FROM m_user WHERE email = ?", b.email, function (err, res) {
-	// 	console.log('this.sql', this.sql) //command/query
-	// 	if(err) {
- //            result(err, null);
- //        }
- //        else{
- //            result(null, res);
- //        }
-	// })
+	// console.log(b)
+	// return
+	sql.query("SELECT * FROM m_user WHERE email = ?", b.email, function (err, res) {
+		console.log('this.sql', this.sql) //command/query
+		if(err) {
+            result(err, null);
+        }
+        else{
+            result(null, res);
+        }
+	})
 }
 
 Mdd.GetAccountInfoByUsername = function (query, result) {
