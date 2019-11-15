@@ -69,6 +69,8 @@ Mdd.doRegistrasiUser = async function (query, result) {
 					}
 		var a = query
 		var b = {
+					first_name : a.first_name,
+					last_name : a.last_name,
 					fullname : a.first_name+" "+a.last_name,
 					username : a.username,
 					password : a.password,
@@ -109,8 +111,8 @@ Mdd.doRegistrasiUser = async function (query, result) {
 Mdd.doInsertRegistered = function (query) {
 	var a = query
 	var b = {
-		first_name : a.fullname,
-		last_name : '',
+		first_name : a.first_name,
+		last_name : a.last_name,
 		username : a.username,
 		password : a.password,
 		email : a.email,
