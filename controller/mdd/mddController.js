@@ -37,6 +37,10 @@ exports.login_merchant_group = function (req, res) {
 /*REGISTRASI*/
 exports.registrasi_mdd_user = function (req, res) {
 	var a = req.body
+	var b = a.json_register
+	var c = JSON.parse(b)
+	console.log(c)
+	return
 	Mdd.doRegistrasiUser(a, function (err, result) {
 		if (err) {
 			res.send(err)
