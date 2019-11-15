@@ -75,7 +75,7 @@ Mdd.doRegistrasiUser = async function (query, result) {
 					email : a.email,
 					phone : a.phone
 				}
-
+		console.log(b)
 		let p1 = await Mdd.doLoginMerchantGroup(login)
 		var c = p1.body
 	
@@ -96,6 +96,7 @@ Mdd.doRegistrasiUser = async function (query, result) {
 				console.log(error)
 			} else {
 				result(null, response.body)
+				console.log(response.body)
 				var objRegistered = Object.assign(b, response.body)
 				Mdd.doInsertRegistered(objRegistered)
 				// console.log("result request >",result.body)
