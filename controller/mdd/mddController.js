@@ -47,7 +47,7 @@ exports.registrasi_mdd_user = function (req, res) {
 			console.log("error >", err)
 		} else {
 			res.send({result})
-			console.log(result)
+			console.log("result >", result)
 		}
 	})
 }
