@@ -39,11 +39,12 @@ exports.registrasi_mdd_user = function (req, res) {
 	var a = req.body
 	var b = a.json_register
 	var c = JSON.parse(b)
-	// console.log(c)
+	console.log(c)
 	// return
 	Mdd.doRegistrasiUser(c, function (err, result) {
 		if (err) {
 			res.send(err)
+			console.log("errror >", err)
 		} else {
 			res.send({result})
 			console.log(result)
