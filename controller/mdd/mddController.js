@@ -44,7 +44,7 @@ exports.registrasi_mdd_user = function (req, res) {
 	Mdd.doRegistrasiUser(c, function (err, result) {
 		if (err) {
 			res.send(err)
-			console.log("errror >", err)
+			console.log("error >", err)
 		} else {
 			res.send({result})
 			console.log(result)
