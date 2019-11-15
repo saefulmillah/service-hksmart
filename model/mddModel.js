@@ -74,7 +74,6 @@ Mdd.doRegistrasiUser = async function (query, result) {
 					fullname : a.first_name+" "+a.last_name,
 					username : a.username,
 					password : a.password,
-					address : a.address,
 					email : a.email,
 					phone : a.phone
 				}
