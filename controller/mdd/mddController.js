@@ -38,10 +38,10 @@ exports.login_merchant_group = function (req, res) {
 exports.registrasi_mdd_user = function (req, res) {
 	var a = req.body
 	var b = a.json_register
-	var c = JSON.parse(b)
-	console.log(c)
+	// var c = JSON.parse(b)
+	console.log(b)
 	// return
-	Mdd.doRegistrasiUser(c, function (err, result) {
+	Mdd.doRegistrasiUser(b, function (err, result) {
 		if (err) {
 			res.send(err)
 			console.log("error >", err)

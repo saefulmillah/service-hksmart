@@ -9,6 +9,7 @@ module.exports = function(app) {
   var cctv = require('../controller/cctv/cctvController')
   var mdd = require('../controller/mdd/mddController.js')
   var csi = require('../controller/csi/CsiController.js')
+  var explore = require('../controller/explore/ExploreController.js')
 
   // todoList Routes
   app.route('/tasks')
@@ -67,6 +68,10 @@ module.exports = function(app) {
     .post(csi.read_feedback)
   app.route('/rating/get_data')
     .post(csi.read_rating)
+
+  // Explore routes
+  app.route('/explore/explore_near')
+    .post(explore.explore_near)
 
 }
 
