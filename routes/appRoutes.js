@@ -48,8 +48,8 @@ module.exports = function(app) {
     .get(cctv.read_cctv_byBranch)
 
   // MDD routes
-  app.route('/mdd/login_device')
-    .post(mdd.login_mdd_device)
+  // app.route('/mdd/login_device')
+  //   .post(mdd.login_mdd_device)
   app.route('/mdd/login')
     .post(mdd.login)
   app.route('/mdd/topup_inquiry')
