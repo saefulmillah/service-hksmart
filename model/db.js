@@ -1,6 +1,6 @@
-'user strict';
+'user strict'
 
-var mysql = require('mysql');
+var mysql = require('mysql')
 
 //local mysql db connection
 var connection = mysql.createConnection({
@@ -8,10 +8,11 @@ var connection = mysql.createConnection({
     user     : 'root',
     password : 'P@ssw0rd',
     database : 'hksmart'
-});
+})
 
 connection.connect(function(err) {
-    if (err) throw err;
-});
+    if (err) 
+    	console.log(err)
+})
 
-module.exports = connection;
+module.exports = connection

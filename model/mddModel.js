@@ -100,8 +100,10 @@ Mdd.doRegistrasiUser = async function (query, result) {
 			} else {
 				result(null, response.body)
 				console.log(response.body)
-				var objRegistered = Object.assign(b, response.body)
-				Mdd.doInsertRegistered(objRegistered)
+				if (response.body.code.equals(200)) {
+					var objRegistered = Object.assign(b, response.body)
+					Mdd.doInsertRegistered(objRegistered)
+				}
 				// console.log("result request >",result.body)
 			}
 		})
@@ -144,7 +146,7 @@ Mdd.GetAccountInfo = function (query, result) {
 	// console.log(b)
 	// return
 	sql.query("SELECT * FROM m_user WHERE email = ?", b.email, function (err, res) {
-		console.log('this.sql', this.sql) //command/query
+		// console.log('this.sql', this.sql) //command/query
 		if(err) {
             result(err, null);
         }
@@ -351,7 +353,7 @@ Mdd.DoInsertTransaksi = function (query) {
 
 	if (status!='ERROR') {
 		sql.query("INSERT INTO t_topup set ?", b)
-		console.log('this.sql', this.sql) //command/query
+		// console.log('this.sql', this.sql) //command/query
 	}
 
 }
