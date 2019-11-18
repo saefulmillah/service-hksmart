@@ -38,10 +38,10 @@ exports.login_merchant_group = function (req, res) {
 exports.registrasi_mdd_user = function (req, res) {
 	var a = req.body
 	var b = a.json_register
-	// var c = JSON.parse(b)
-	console.log(b)
+	var c = JSON.parse(b)
+	console.log(c)
 	// return
-	Mdd.doRegistrasiUser(b, function (err, result) {
+	Mdd.doRegistrasiUser(c, function (err, result) {
 		if (err) {
 			res.send(err)
 			console.log("error >", err)
@@ -178,6 +178,16 @@ exports.topup_inquiry = function (req, res) {
 			res.send(err)
 			res.send({res_topup_inquiry})
 			console.log("res_topup_inquiry >", res_topup_inquiry)
+	})
+}
+
+exports.get_serial_invoice = function (req, res) {	
+	Mdd.getSerialInvoice(function (err, result) {
+		if (err) {
+			res.send(err)
+		} else {
+			res.send({result})
+		}
 	})
 }
 

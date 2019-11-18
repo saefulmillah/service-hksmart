@@ -98,23 +98,10 @@ Mdd.doRegistrasiUser = async function (query, result) {
 		  	if (error) {
 				console.log(error)
 			} else {
-				result(null, {
-							    "code": 200,
-							    "message": "Success",
-							    "data": {
-							        "emv_ksn": "4E9996E9DE7A22E00000",
-							        "emv_ipek": "5509FABBE45760137E4C873F8DC97D15",
-							        "pin_ksn": "5CFA46EF67FDC6E00000",
-							        "pin_ipek": "08F73CFBF7921AF95EC05C11B55A2B9F",
-							        "track_ksn": "BCBDAD12451E96E00000",
-							        "track_ipek": "270F108D37571CA5F00EDB5284CF8648",
-							        "pin_block_mk_universal": "8C158509A1217773",
-							        "pin_block_wk_universal": "F557F15940570F48"
-							    }
-							})
-				// console.log(response.body)
-				// var objRegistered = Object.assign(b, response.body)
-				// Mdd.doInsertRegistered(objRegistered)
+				result(null, response.body)
+				console.log(response.body)
+				var objRegistered = Object.assign(b, response.body)
+				Mdd.doInsertRegistered(objRegistered)
 				// console.log("result request >",result.body)
 			}
 		})

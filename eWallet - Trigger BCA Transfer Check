@@ -1,0 +1,18 @@
+eWallet - Trigger BCA Transfer Check
+token = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkb3JtYW4iLCJpc3MiOiJodHRwOi8vZGV2LWFwcC5tZGQuY28uaWQ6NTgwODAvTWVyY2hhbnRNb2JBcHBIb3N0L3YxL2xvZ2luIiwiaWF0IjoxNTczNzI3NjAwLCJleHAiOjE1ODE2NzY0MDB9.v8Z5kBHrioP_mOlYaSkwA01M4f8qk3W4E27Qw338Bv-Py1nP9y222wWqXjhOjdgKsXYuBHdFRhbVAWqRlSkLvA
+authorization = Murdoc eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkb3JtYW4iLCJpc3MiOiJodHRwOi8vZGV2LWFwcC5tZGQuY28uaWQ6NTgwODAvTWVyY2hhbnRNb2JBcHBIb3N0L3YxL2xvZ2luIiwiaWF0IjoxNTczNzI3NjAwLCJleHAiOjE1ODE2NzY0MDB9.v8Z5kBHrioP_mOlYaSkwA01M4f8qk3W4E27Qw338Bv-Py1nP9y222wWqXjhOjdgKsXYuBHdFRhbVAWqRlSkLvA
+device timestamp = 1573731533
+url = http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_sb/trigger_api/trigger_bca_transfer_check
+request body = {
+		"device_timestamp":"1573731533"
+		}
+
+http response code = 200
+response body = {"response_code":"0Z11","midware_timestamp":"1573731534","message":"EWALLET TRIGGER BCA TRANSFER CHECK FAILED.\nTHERE IS NO TOPUP UNIQUE INQUIRY FOR THIS MERCHANT.","version":{"ewallet_ver":"v0.3.0","device_crypto_ver":"v0.3.0"},"status":"ERROR"}
+parse json response...
+status = ERROR
+response code = 0Z11
+message = EWALLET TRIGGER BCA TRANSFER CHECK FAILED.
+THERE IS NO TOPUP UNIQUE INQUIRY FOR THIS MERCHANT.
+midware timestamp = 1573731534
+version = {"ewallet_ver":"v0.3.0","device_crypto_ver":"v0.3.0"}
