@@ -352,10 +352,10 @@ exports.topup_emoney = function (req, res) {
 					if (err) {
 						res.send(err)
 					} else {
-						var obj_topup_emoney = Object.assign(c, result);
-						console.log("obj_topup_emoney >", obj_topup_emoney)
-						console.log(result.balance_amount)
-						Mdd.DoUpdateTransaksi(obj_topup_emoney)
+						// var obj_topup_emoney = Object.assign(c, result);
+						// console.log("obj_topup_emoney >", obj_topup_emoney)
+						// console.log(result.balance_amount)
+						// Mdd.DoUpdateTransaksi(obj_topup_emoney)
 						res.send(result)
 					}
 				})
