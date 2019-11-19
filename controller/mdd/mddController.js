@@ -165,6 +165,15 @@ exports.login = function (req, res) {
 	    }
 	}
 */
+// exports.get_serial_invoice = function (req, res) {
+// 	Mdd.getNoInvoice(req, function (err, result) {
+// 		if (err) {
+// 			res.send(err)
+// 		} else {
+// 			res.send(result)
+// 		}
+// 	})
+// }
 exports.topup_inquiry = function (req, res) {		
 	var a = req.body
 	var b = a.jsonDoTopupInquiry
@@ -172,8 +181,8 @@ exports.topup_inquiry = function (req, res) {
 	console.log(c)
 	// return
 	Mdd.DoTopupInquiry(c, function (err, result) {	
-		var res_topup_inquiry = result.body
-		var obj = Object.assign(b, res_topup_inquiry)
+		var res_topup_inquiry = result
+		var obj = Object.assign(c, res_topup_inquiry)
 		if (err) 
 			res.send(err)
 			res.send({res_topup_inquiry})
@@ -193,7 +202,7 @@ exports.topup_inquiry_wallet = function (req, res) {
 	var a = req.body
 	var b = a.jsonDoTopupInquiryWallet
 	var c = JSON.parse(b)
-	console.log(c)
+	// console.log(c)
 	// var c = a					
 
 	Mdd.DoTopupInquiryWallet(c, function (err, result) {

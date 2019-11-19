@@ -169,7 +169,24 @@ Mdd.GetAccountInfoByUsername = function (query, result) {
 	})
 }
 
-Mdd.DoTopupInquiry = function (query, result) {
+Mdd.getNoInvoice = function (query) {
+	return new Promise(resolve => {
+		var a = query
+		var q = "CALL generate_invoice()"
+		sql.query(q, function (err, res) {
+			if (err) {
+				console.log(err)
+			} else {
+				resolve(res[0][0])
+			}
+		})
+	})
+}
+
+Mdd.DoTopupInquiry = async function (query, result) {
+
+	let invoice_num = await Mdd.getNoInvoice()
+
 	var a = query
 	var b = {
 		device_id : a.device_id,
@@ -179,7 +196,7 @@ Mdd.DoTopupInquiry = function (query, result) {
 	}
 
 	var token = a.token
-	// console.log("body >", b)
+	console.log("invoice_num >", invoice_num)
 	// console.log("token >", token)
 	var request = require("request")
 
@@ -200,7 +217,10 @@ Mdd.DoTopupInquiry = function (query, result) {
 		if (error) {
 			result(error, null)
 		} else {
-			result(null, body)
+			console.log(invoice_num)
+			console.log(body.body)
+			var obj_topup_inquiry= Object.assign(invoice_num, body.body)
+			result(null, obj_topup_inquiry)
 		}
 	})
 
@@ -395,6 +415,8 @@ Mdd.getTopupHistory = function (query, result) {
 		}
 	})
 }
+
+
 
 module.exports = Mdd
 
