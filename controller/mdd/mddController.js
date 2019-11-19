@@ -181,16 +181,6 @@ exports.topup_inquiry = function (req, res) {
 	})
 }
 
-exports.get_serial_invoice = function (req, res) {	
-	Mdd.getSerialInvoice(function (err, result) {
-		if (err) {
-			res.send(err)
-		} else {
-			res.send({result})
-		}
-	})
-}
-
 /* STEP 4 - TOPUP INQUIRY WALLET
 	var b = {
 		"topup_amount" : b.paid_amount+b.admin_fee,
