@@ -416,6 +416,36 @@ Mdd.getTopupHistory = function (query, result) {
 	})
 }
 
+Mdd.checkTransfer = function (query, result) {
+	var request = require("request")
+	var a = query
+	var b = {
+				device_timestamp : ts.toString()
+			}
+	var token = a.token
+	var options = {
+		method : "POST",
+		url : "http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_sb/trigger_api/trigger_bca_transfer_check",
+		headers : {
+			'cache-control' : 'no-cache',
+			'Content-Type' : 'application/json',
+			Authorization : "Murdoc "+token,
+			Accept : 'application/json'
+		},
+		body : b,
+		json : true
+	}
+	console.log("options >", options)
+	request(options, function (error, response) {
+		if (error) {
+			result(error, null)
+		} else {
+			result(null, response.body)
+			console.log("response >", response.body)
+		}
+	})
+
+}
 
 
 module.exports = Mdd
