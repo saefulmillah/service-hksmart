@@ -406,9 +406,9 @@ exports.topup_emoney_history = function (req, res) {
 exports.konfirmasi_transfer = function (req, res) {
 	var a = req.body
 	var b = a.json_konf_transfer
-	// var c = JSON.parse(b)
-	console.log("a.json_konf_transfer >", b)
-	Mdd.checkTransfer(b, function (err, result) {
+	var c = JSON.parse(b)
+	console.log("a.json_konf_transfer >", c)
+	Mdd.checkTransfer(c, function (err, result) {
 		if (err) {
 			res.send(err)
 		} else {
