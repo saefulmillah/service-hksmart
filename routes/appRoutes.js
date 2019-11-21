@@ -6,6 +6,7 @@ module.exports = function(app) {
   var gate = require('../controller/gate/gateController')
   var tariff = require('../controller/tariff/tariffController')
   var restarea = require('../controller/restarea/restareaController')
+  var infomudik = require('../controller/infomudik/InfoMudikController')
   var cctv = require('../controller/cctv/cctvController')
   var mdd = require('../controller/mdd/mddController.js')
   var csi = require('../controller/csi/CsiController.js')
@@ -42,6 +43,9 @@ module.exports = function(app) {
   // Rest Area Routes
   app.route('/restarea')
     .get(restarea.list_all_restarea)
+  // Info Mudik Routes
+  app.route('/infomudik')
+    .get(infomudik.get_list_info_mudik)
 
   // Cctv routes
   app.route('/cctv/:branchID')
