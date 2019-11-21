@@ -8,7 +8,7 @@ exports.get_list_info_mudik = function (req, res) {
 			res.json(err)
 		} else {
 			console.log(result)
-			res.json(result)
+			res.json({result})
 		}
 	})
 }
