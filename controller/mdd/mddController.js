@@ -202,7 +202,7 @@ exports.topup_inquiry_wallet = function (req, res) {
 	var a = req.body
 	var b = a.jsonDoTopupInquiryWallet
 	var c = JSON.parse(b)
-	// console.log(c)
+	console.log(c)
 	// var c = a					
 
 	Mdd.DoTopupInquiryWallet(c, function (err, result) {
@@ -334,43 +334,52 @@ exports.topup_emoney = function (req, res) {
 		//     message : "TOPUP APPROVED.",
 		//     status : "OK"
 		// }
-
-	Mdd.DoCekSaldo(c, function (err, result) {
-
-		console.log('request >', c)
-		// return
+	Mdd.DoTopup(c, function (err, result) {
 		var result = result.body
-		
+		console.log('result topup >', result)
 		if (err) {
 			res.send(err)
 		} else {
-			console.log('result cek saldo >', result)
-			if (c.topup_amount < result.balance_amount) {
-				Mdd.DoTopup(c, function (err, result) {
-					var result = result.body
-					console.log('result topup >', result)
-					if (err) {
-						res.send(err)
-					} else {
-						// var obj_topup_emoney = Object.assign(c, result);
-						// console.log("obj_topup_emoney >", obj_topup_emoney)
-						// console.log(result.balance_amount)
-						// Mdd.DoUpdateTransaksi(obj_topup_emoney)
-						res.send(result)
-					}
-				})
-			} else {
-				result = {
-					response_code : "0000",
-					status : "FAILED",
-					message : "Saldo Kurang",
-					saldo : result.balance_amount
-				}
-				console.log("kurang saldo >", result)
-				res.send(result)
-			}
-		}	
+			res.send(result)
+		}
 	})
+
+	// Mdd.DoCekSaldo(c, function (err, result) {
+
+	// 	console.log('request >', c)
+	// 	// return
+	// 	var result = result.body
+		
+	// 	if (err) {
+	// 		res.send(err)
+	// 	} else {
+	// 		console.log('result cek saldo >', result)
+	// 		if (c.topup_amount < result.balance_amount) {
+	// 			Mdd.DoTopup(c, function (err, result) {
+	// 				var result = result.body
+	// 				console.log('result topup >', result)
+	// 				if (err) {
+	// 					res.send(err)
+	// 				} else {
+	// 					// var obj_topup_emoney = Object.assign(c, result);
+	// 					// console.log("obj_topup_emoney >", obj_topup_emoney)
+	// 					// console.log(result.balance_amount)
+	// 					// Mdd.DoUpdateTransaksi(obj_topup_emoney)
+	// 					res.send(result)
+	// 				}
+	// 			})
+	// 		} else {
+	// 			result = {
+	// 				response_code : "0000",
+	// 				status : "FAILED",
+	// 				message : "Saldo Kurang",
+	// 				saldo : result.balance_amount
+	// 			}
+	// 			console.log("kurang saldo >", result)
+	// 			res.send(result)
+	// 		}
+	// 	}	
+	// })
 }
 
 
