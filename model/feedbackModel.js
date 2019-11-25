@@ -24,6 +24,7 @@ Feedback.insertFeedback = function (query, result) {
 		id_ruas : a.id_ruas,
 		answer : a.description
 	}
+	console.log("request > b", b)
 	sql.query(q, b, function (err, res) {
 		if (err) {
 			result(err, null)
