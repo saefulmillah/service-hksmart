@@ -18,7 +18,7 @@ exports.insert_feedback = function (req, res) {
 	var b = a.json_feedback
 	var c = JSON.parse(b)
 	console.log("request >", c)
-	Feedback.insFeedback(c, function (err, result) {
+	Feedback.insertFeedback(c, function (err, result) {
 		if (err) {
 			res.json(err)
 		} else {
