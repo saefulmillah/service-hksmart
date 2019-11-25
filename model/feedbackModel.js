@@ -1,5 +1,6 @@
 'use strict'
 var sql = require('./db.js')
+var ts = Math.round((new Date()).getTime() / 1000)
 var Feedback = function (Feedback) {
 	this.created_at = new Date()
 }
@@ -22,9 +23,13 @@ Feedback.insertFeedback = function (query, result) {
 		id_feedback : a.id_feedback,
 		id_user : a.id_user,
 		id_ruas : a.id_ruas,
-		answer : a.answer
+		answer : a.answer,
+		created_at : ts,
+		created_by : "admin",
+		updated_at : ts,
+		updated_by : "admin"
 	}
-	console.log("request > b", a)
+	console.log("request > a", a)
 	console.log("request > b", b)
 	sql.query(q, b, function (err, res) {
 		if (err) {
