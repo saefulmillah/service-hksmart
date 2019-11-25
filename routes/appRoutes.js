@@ -50,6 +50,7 @@ module.exports = function(app) {
   // Feedback
   app.route('/feedback')
     .get(feedback.get_list_feedback)
+    .post(feedback.insert_feedback)
   // Cctv routes
   app.route('/cctv/:branchID')
     .get(cctv.read_cctv_byBranch)
