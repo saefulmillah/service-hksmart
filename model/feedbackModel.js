@@ -19,10 +19,10 @@ Feedback.insertFeedback = function (query, result) {
 	var a = query
 	var q = "INSERT INTO t_feedback SET ?"
 	var b = {
-		id_feedback = a.feedback_id,
-		id_user = a.id_user,
-		id_ruas = a.id_ruas,
-		answer = a.description
+		id_feedback : a.feedback_id,
+		id_user : a.id_user,
+		id_ruas : a.id_ruas,
+		answer : a.description
 	}
 	sql.query(q, b, function (err, res) {
 		if (err) {
