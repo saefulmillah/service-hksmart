@@ -11,6 +11,7 @@ module.exports = function(app) {
   var mdd = require('../controller/mdd/mddController.js')
   var csi = require('../controller/csi/CsiController.js')
   var explore = require('../controller/explore/ExploreController.js')
+  var feedback = require('../controller/rating/FeedbackController.js');
 
   // todoList Routes
   app.route('/tasks')
@@ -46,7 +47,9 @@ module.exports = function(app) {
   // Info Mudik Routes
   app.route('/infomudik')
     .get(infomudik.get_list_info_mudik)
-
+  // Feedback
+  app.route('/feedback')
+    .get(feedback.get_list_feedback)
   // Cctv routes
   app.route('/cctv/:branchID')
     .get(cctv.read_cctv_byBranch)
