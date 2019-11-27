@@ -56,7 +56,7 @@ exports.read_csi = function (req, res) {
 		} else {
 			// res.send(result)
 			var scheme = {
-			  "$group[aspect_item](id_aspect_detail)": {
+			  "$group[result](id_aspect_detail)": {
 			    "id": "id_aspect_detail",
 			    "aspect" : "aspect",
 			    "aspect_classification" : "aspect_classification",
