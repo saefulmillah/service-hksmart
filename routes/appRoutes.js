@@ -78,7 +78,8 @@ module.exports = function(app) {
     .post(csi.read_feedback)
   app.route('/rating/get_data')
     .post(csi.read_rating)
-
+  app.route('/csi/get_data')
+    .post(csi.read_csi)
   // Explore routes
   app.route('/explore/explore_near')
     .post(explore.explore_near)
