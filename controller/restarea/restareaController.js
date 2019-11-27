@@ -38,6 +38,7 @@ exports.get_restarea_id = function (req, res) {
 			  }
 			}
 			res.json(shape.parse(result, scheme))
+			console.log("result", shape.parse(result, scheme))
 		}
 	})
 }
