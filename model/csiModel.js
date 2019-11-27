@@ -42,7 +42,7 @@ Csi.get_rating = function (query, result) {
 
 Csi.get_csi = function (query, result) {
     var a = query
-    var q = "SELECT a.aspect, a.id as id_aspect, d.aspect_item, d.id as id_aspect_detail, s.score, s.id as id_scoring, s.scoring_status, d.id_aspect_classification, c.aspect_classification FROM m_aspect a INNER JOIN m_aspect_detail d ON a.id = d.id_aspect INNER JOIN m_aspect_classification c ON d.id_aspect_classification=c.id INNER JOIN t_aspect_scoring s ON s.id_aspect_detail=d.id ORDER BY d.id ASC"
+    var q = "SELECT a.aspect, a.id as id_aspect, d.aspect_item, d.id as id_aspect_detail, s.score, s.id as id_scoring, s.scoring_status, d.id_aspect_classification, c.aspect_classification FROM m_aspect a INNER JOIN m_aspect_detail d ON a.id = d.id_aspect INNER JOIN m_aspect_classification c ON d.id_aspect_classification=c.id INNER JOIN t_aspect_scoring s ON s.id_aspect_detail=d.id WHERE s.created_at BETWEEN ? AND ? ORDER BY d.id ASC"
     sql.query(q, [a.start_date, a.end_date], function (err, res) {
         if(err) {
             // console.log("error: ", err)
