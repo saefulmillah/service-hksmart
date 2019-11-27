@@ -44,6 +44,8 @@ module.exports = function(app) {
   // Rest Area Routes
   app.route('/restarea')
     .get(restarea.list_all_restarea)
+  app.route('/restarea/get_id/:restareaId')
+    .get(restarea.get_restarea_id)
   // Info Mudik Routes
   app.route('/infomudik')
     .get(infomudik.get_list_info_mudik)

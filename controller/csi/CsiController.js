@@ -27,28 +27,6 @@ exports.read_rating = function(req, res) {
 
 exports.read_csi = function (req, res) {
 	var a = req.body
-	// var input = [
-	// 			  {pid: 1, contributor: 'jdalton', projectID: 1, projectName: 'lodash'},
-	// 			  {pid: 1, contributor: 'jdalton', projectID: 2, projectName: 'docdown'},
-	// 			  {pid: 1, contributor: 'jdalton', projectID: 3, projectName: 'lodash-cli'},
-	// 			  {pid: 2, contributor: 'contra',  projectID: 4, projectName: 'gulp'},
-	// 			  {pid: 3, contributor: 'phated',  projectID: 4, projectName: 'gulp'},
-	// 			]
-	
-
-	// var scheme = {
-	//   "$group[contributors](pid)": {
-	//     "id": "pid",
-	//     "name": "contributor",
-	//     "$group[projects](projectID)": {
-	//       "id": "projectID",
-	//       "name": "projectName"
-	//     }
-	//   }
-	// };
-
-	// console.log(shape.parse(input, scheme));
-	// return
 	Csi.get_csi(a, function (err, result) {
 		// console.log("")
 		if (err) {
@@ -70,7 +48,7 @@ exports.read_csi = function (req, res) {
 			    }
 			  }
 			}
-			res.json(shape.parse(result, scheme));
+			res.json(shape.parse(result, scheme))
 		}
 			// console.log(result)
 	})
