@@ -18,7 +18,7 @@ Mdd.LoginDevice = function (query, result) {
 
 	var options = { 
 		method: 'POST',
-	  	url: 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/login',
+	  	url: 'http://http://prod-app.mdd.co.id:38080/MerchantMobAppHost/v1/login',
 	  	headers: { 
 	  				'cache-control': 'no-cache',
 	     			'Content-Type': 'application/json' 
@@ -43,7 +43,7 @@ Mdd.doLoginMerchantGroup = function (query) {
 
 		var options = { 
 			method: 'POST',
-		  	url: 'http://dev-web.mdd.co.id/api/v2/login_check',
+		  	url: 'http://multipay.mdd.co.id/api/v2/login_check',
 		  	headers: { 
 		  				'cache-control': 'no-cache',
 		     			'Content-Type': 'application/json' 
@@ -85,7 +85,7 @@ Mdd.doRegistrasiUser = async function (query, result) {
 		var request = require("request")
 		var options = { 
 				method: 'POST',
-			  	url: 'http://dev-web.mdd.co.id/api/v2/mobile/user/merchants/registrations',
+			  	url: 'http://multipay.mdd.co.id/api/v2/mobile/user/merchants/registrations',
 			  	headers: { 
 			     			'Content-Type': 'application/json',
 			     			'Authorization': 'Bearer '+c.token
@@ -203,7 +203,7 @@ Mdd.DoTopupInquiry = async function (query, result) {
 
 	var options = {
 		method : 'POST',
-		url : 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_topup_switching/topup/inquiry',
+		url : 'http://http://prod-app.mdd.co.id:38080/MerchantMobAppHost/v1/emoney_topup_switching/topup/inquiry',
 		headers : {
 			'cache-control' : 'no-cache',
 			'Content-Type' : 'application/json',
@@ -240,7 +240,7 @@ Mdd.DoTopupInquiryWallet = function (query, result) {
 
 	var options = {
 		method : 'POST',
-		url : 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_sb/topup/unique_transfer/inquiry',
+		url : 'http://http://prod-app.mdd.co.id:38080/MerchantMobAppHost/v1/emoney_sb/topup/unique_transfer/inquiry',
 		headers : {
 			'cache-control' : 'no-cache',
 			'Content-Type' : 'application/json',
@@ -278,7 +278,7 @@ Mdd.DoCekSaldo = function (query, result) {
 
 	var options = {
 		method : 'POST',
-		url : 'http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_sb/get_account_info/balance',
+		url : 'http://http://prod-app.mdd.co.id:38080/MerchantMobAppHost/v1/emoney_sb/get_account_info/balance',
 		headers : {
 			'cache-control' : 'no-cache',
 			'Content-Type' : 'application/json',
@@ -317,7 +317,7 @@ Mdd.DoTopup = function (query, result) {
 	var token = a.token
 	var options = {
 		method : "POST",
-		url : "http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_topup_switching/topup/",
+		url : "http://http://prod-app.mdd.co.id:38080/MerchantMobAppHost/v1/emoney_topup_switching/topup/",
 		headers : {
 			'cache-control' : 'no-cache',
 			'Content-Type' : 'application/json',
@@ -426,7 +426,7 @@ Mdd.checkTransfer = function (query, result) {
 	var token = a.token
 	var options = {
 		method : "POST",
-		url : "http://dev-app.mdd.co.id:58080/MerchantMobAppHost/v1/emoney_sb/trigger_api/trigger_bca_transfer_check",
+		url : "http://http://prod-app.mdd.co.id:38080/MerchantMobAppHost/v1/emoney_sb/trigger_api/trigger_bca_transfer_check",
 		headers : {
 			'cache-control' : 'no-cache',
 			'Content-Type' : 'application/json',
