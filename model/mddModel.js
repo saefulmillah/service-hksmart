@@ -99,11 +99,11 @@ Mdd.doRegistrasiUser = async function (query, result) {
 				console.log(error)
 			} else {
 				result(null, response.body)
-				Mdd.doInsertRegistered(objRegistered)
+				// Mdd.doInsertRegistered(objRegistered)
 				// console.log(response.body)
 				// if (response.body.code.equals(200)) {
-				// 	var objRegistered = Object.assign(b, response.body)
-				// 	Mdd.doInsertRegistered(objRegistered)
+					var objRegistered = Object.assign(b, response.body)
+					Mdd.doInsertRegistered(objRegistered)
 				// }
 				// console.log("result request >",result.body)
 			}
