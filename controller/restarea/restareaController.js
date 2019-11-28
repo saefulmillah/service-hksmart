@@ -32,7 +32,10 @@ exports.get_restarea_id = function (req, res) {
 			      "FACILITY_NAME": "FACILITY_NAME",
 			      "$group[facilities_detail](ID_FACILITY_DETAIL)" : {
 			      	"ID_FACILITY_DETAIL" : "ID_FACILITY_DETAIL",
-			      	"FACILITY_DETAIL_NAME" : "FACILITY_DETAIL_NAME"
+			      	"FACILITY_DETAIL_NAME" : "FACILITY_DETAIL_NAME",
+			      	"FACILITY_DETAIL_REMARK" : "FACILITY_DETAIL_REMARK",
+			      	"FACILITY_DETAIL_PHONE" : "FACILITY_DETAIL_PHONE",
+
 			      }
 			    }
 			  }
