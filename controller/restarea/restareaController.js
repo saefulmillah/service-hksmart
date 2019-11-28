@@ -27,6 +27,9 @@ exports.get_restarea_id = function (req, res) {
 			    "REST_AREA_LATITUDE" : "REST_AREA_LATITUDE",
 			    "REST_AREA_LONGITUDE" : "REST_AREA_LONGITUDE",
 			    "REST_AREA_IMAGE": "REST_AREA_IMAGE",
+			    "REST_AREA_PHONE": "REST_AREA_PHONE",
+			    "REST_AREA_REMARKS": "REST_AREA_REMARKS",
+			    "REST_AREA_ADDRESS": "REST_AREA_ADDRESS",
 			    "$group[facilities](ID_FACILITY)": {
 			      "id": "ID_FACILITY",
 			      "FACILITY_NAME": "FACILITY_NAME",
