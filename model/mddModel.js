@@ -318,6 +318,7 @@ Mdd.DoTopup = function (query, result) {
 	var options = {
 		method : "POST",
 		url : "http://prod-app.mdd.co.id:38080/MerchantMobAppHost/v1/emoney_topup_switching/topup/",
+		timeout: 6000,
 		headers : {
 			'cache-control' : 'no-cache',
 			'Content-Type' : 'application/json',
