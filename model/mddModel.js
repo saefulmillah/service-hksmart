@@ -351,7 +351,8 @@ Mdd.GetAccountInfo = function (query, result) {
 Mdd.DoInsertTransaksi = function (query) {
 	var a = query
 	var b = {
-		admin_fee: 900,
+		no_invoice: a.invoicenum,
+		admin_fee: a.admin_fee,
         device_timestamp: a.midware_timestamp,
         device_id : a.device_id,
         card_issuer_id : a.card_issuer_id,
@@ -368,14 +369,15 @@ Mdd.DoInsertTransaksi = function (query) {
 
 	// console.log("DoInsertTransaksi >", query)
 	// return
-	var status = 'OK' 
-	console.log('status >', status)
-	console.log('insert >', b)
+	sql.query("INSERT INTO t_topup set ?", b)
+	// var status = 'OK' 
+	// console.log('status >', status)
+	// console.log('insert >', b)
 
-	if (status!='ERROR') {
-		sql.query("INSERT INTO t_topup set ?", b)
+	// if (status!='ERROR') {
+		// sql.query("INSERT INTO t_topup set ?", b)
 		// console.log('this.sql', this.sql) //command/query
-	}
+	// }
 
 }
 
