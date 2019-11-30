@@ -404,13 +404,13 @@ Mdd.DoUpdateTransaksi = function (query) {
 	}
 	console.log("DoUpdateTransaksi > ", b)
 	// return
-	sql.query("UPDATE t_topup SET no_invoice = ?, status_topup = ?, card_issuer_id = ?, device_id = ?, entry_mode = ?, payment_method = ?, reff_no = ?, updated_at = ? WHERE device_id = ? AND status_topup==null", [a.invoice_num, a.status, a.card_issuer_id, a.device_id, a.entry_mode, a.payment_method, a.reff_no, ts, a.device_id])
+	sql.query("UPDATE t_topup SET no_invoice = ?, status_topup = ?, card_issuer_id = ?, device_id = ?, entry_mode = ?, payment_method = ?, reff_no = ?, updated_at = ? WHERE device_id = ? AND status_topup=null", [a.invoice_num, a.status, a.card_issuer_id, a.device_id, a.entry_mode, a.payment_method, a.reff_no, ts, a.device_id])
 }
 
 Mdd.getTopupHistory = function (query, result) {
 	var a = query
-	var q = "SELECT DATE_FORMAT(FROM_UNIXTIME(created_at),'%d %M, %Y %H:%m:%s') AS created_at, no_invoice, reff_no, paid_amount, status_confirm, no_ue FROM t_topup ORDER BY id DESC LIMIT 5"
-	sql.query(q, function (err, res) {
+	var q = "SELECT DATE_FORMAT(FROM_UNIXTIME(device_timestamp),'%d %M, %Y %H:%m:%s') AS created_at, no_invoice, reff_no, paid_amount, status_confirm, no_ue FROM t_topup WHERE device_id = ? ORDER BY id DESC LIMIT 10"
+	sql.query(q, a.device_id,function (err, res) {
 		if (err) {
 			result(err, null)
 		} else {
@@ -447,7 +447,18 @@ Mdd.checkTransfer = function (query, result) {
 			console.log("response >", response.body)
 		}
 	})
+}
 
+Mdd.DoTopupByInvoice = function (query, result) {
+	var invoiceno = query
+	var q = "SELECT t.no_invoice, t.merchant_id, t.no_ue, t.topup_amount, t.admin_fee, t.paid_amount, t.card_issuer_id, t.device_id, t.device_timestamp, t.created_at, t.created_by, u.username, u.emv_ipek, u.emv_ksn, u.pin_ipek, u.pin_ksn, u.track_ipek, u.track_ksn FROM t_topup t INNER JOIN m_user u ON t.device_id=u.device_id WHERE t.no_ue IS NOT NULL AND t.no_invoice = ?"
+	sql.query(q, invoiceno, function (err, res) {
+		if (err) {
+			result(err, null)
+		} else {
+			result(null, res)
+		}
+	})
 }
 
 

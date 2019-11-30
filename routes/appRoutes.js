@@ -72,6 +72,8 @@ module.exports = function(app) {
     .post(mdd.registrasi_mdd_user)
   app.route('/mdd/check_transfer')
     .post(mdd.konfirmasi_transfer)
+  app.route('/mdd/topup_by_invoice/:invoiceno')
+    .get(mdd.topup_by_invoice)
   // app.route('/mdd/info_payment')
   //   .post(mdd.cek_status_transfer)
   app.route('/mdd/topup_emoney')

@@ -304,6 +304,7 @@ exports.topup_emoney = function (req, res) {
 	var a = req.body
 	var b = a.json_do_topup
 	var c = JSON.parse(b)
+	console.log(c)
 	// var c = a
 
 		// var c = {
@@ -423,6 +424,20 @@ exports.konfirmasi_transfer = function (req, res) {
 		} else {
 			res.send(result)
 			console.log(result)
+		}
+	})
+}
+
+exports.topup_by_invoice = function (req, res) {
+	var a = req.params.invoiceno
+	// var b = a.json_topup_by_invoice
+	// var c = JSON.parse(b)
+	Mdd.DoTopupByInvoice(a, function (err, TopupByInvoice) {
+		if (err) {
+			res.send(err)
+		} else {
+			res.send({TopupByInvoice})
+			console.log(TopupByInvoice)
 		}
 	})
 }
