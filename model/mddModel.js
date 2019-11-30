@@ -409,7 +409,7 @@ Mdd.DoUpdateTransaksi = function (query) {
 
 Mdd.getTopupHistory = function (query, result) {
 	var a = query
-	var q = "SELECT DATE_FORMAT(FROM_UNIXTIME(created_at),'%d %M, %Y %H:%m:%s') AS created_at, no_invoice, reff_no, paid_amount, status_confirm FROM t_topup ORDER BY id DESC LIMIT 5"
+	var q = "SELECT DATE_FORMAT(FROM_UNIXTIME(created_at),'%d %M, %Y %H:%m:%s') AS created_at, no_invoice, reff_no, paid_amount, status_confirm, no_ue FROM t_topup ORDER BY id DESC LIMIT 5"
 	sql.query(q, function (err, res) {
 		if (err) {
 			result(err, null)
