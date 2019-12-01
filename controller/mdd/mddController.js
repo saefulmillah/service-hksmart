@@ -441,3 +441,16 @@ exports.topup_by_invoice = function (req, res) {
 		}
 	})
 }
+
+exports.get_user = function (req, res) {
+	var a = req.params.device_id
+	console.log(a)
+	Mdd.UserProfile(a, function (err, UserProfile) {
+		if (err) {
+			res.send(err)
+		} else {
+			res.send({UserProfile})
+			console.log(UserProfile)
+		}
+	})
+}

@@ -461,6 +461,19 @@ Mdd.DoTopupByInvoice = function (query, result) {
 	})
 }
 
+Mdd.UserProfile = function (query, result) {
+	var device_id = query
+	console.log(device_id)
+	var q = "SELECT first_name, last_name, email, phone FROM m_user WHERE pin_ksn = ?"
+	sql.query(q, device_id, function (err, res) {
+		if (err) {
+			result(err, null)
+		} else {
+			result(null, res)
+		}
+	})
+}
+
 
 module.exports = Mdd
 
