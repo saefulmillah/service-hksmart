@@ -13,7 +13,13 @@ exports.list_all_branch = function(req, res) {
   });
 };
 
-
+exports.ujiCoba = function (req, res) {
+    console.log("Berhasil");
+  // Booking.ujiCoba(function (err, result) {
+  //   console.log("Berhasil");
+  //   return
+  // });
+};
 
 exports.create_a_branch = function(req, res) {
   var new_branch = new Branch(req.body);

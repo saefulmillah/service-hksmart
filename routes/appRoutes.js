@@ -76,6 +76,8 @@ module.exports = function(app) {
     .get(mdd.topup_by_invoice)
   app.route('/mdd/get_profile/:device_id')
     .get(mdd.get_user)
+  app.route('/test')
+    .get(branch.ujiCoba)    
   // app.route('/mdd/info_payment')
   //   .post(mdd.cek_status_transfer)
   app.route('/mdd/topup_emoney')
